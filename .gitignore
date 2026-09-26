@@ -1,0 +1,11 @@
+*~
+*.bak
+*.swp
+*.tmp
+
+.DS_Store
+
+# Secrets / machine-local
+secrets/
+.env
+.env.*

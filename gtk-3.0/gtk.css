@@ -1,0 +1,255 @@
+/* Ayu Mirage — GTK3 */
+
+@define-color theme_bg_color #1f2430;
+@define-color theme_fg_color #cbccc6;
+@define-color theme_base_color #191e2a;
+@define-color theme_text_color #cbccc6;
+
+@define-color theme_selected_bg_color #ffcc66;
+@define-color theme_selected_fg_color #1f2430;
+
+@define-color insensitive_bg_color #242936;
+@define-color insensitive_fg_color #707a8c;
+
+
+/* Main */
+window,
+.background {
+    background-color: #1f2430;
+    color: #cbccc6;
+}
+
+
+/* Header / titlebar */
+headerbar,
+.titlebar {
+    background-image: none;
+    background-color: #272d3b;
+    color: #cbccc6;
+
+    border-bottom: 1px solid #3e4a5c;
+    box-shadow: none;
+}
+
+
+/* Buttons */
+button {
+    background-image: none;
+    background-color: #2a3040;
+    color: #cbccc6;
+
+    border: 1px solid #3e4a5c;
+    border-radius: 6px;
+
+    box-shadow: none;
+    text-shadow: none;
+}
+
+button:hover {
+    background-image: none;
+    background-color: #343c4d;
+    border-color: #73d0ff;
+}
+
+button:active,
+button:checked {
+    background-image: none;
+    background-color: #ffcc66;
+    color: #1f2430;
+    border-color: #ffcc66;
+}
+
+
+/* Inputs */
+entry {
+    background-image: none;
+    background-color: #191e2a;
+    color: #cbccc6;
+
+    border: 1px solid #3e4a5c;
+    border-radius: 6px;
+
+    box-shadow: none;
+}
+
+entry:focus {
+    border-color: #ffcc66;
+}
+
+
+/* Views / lists */
+treeview.view,
+textview,
+textview text,
+.view {
+    background-color: #1f2430;
+    color: #cbccc6;
+}
+
+treeview.view:selected,
+row:selected {
+    background-color: #33415e;
+    color: #ffffff;
+}
+
+row:hover {
+    background-color: #2a3040;
+}
+
+
+/* Notebook / tabs */
+notebook {
+    background-color: #1f2430;
+}
+
+notebook header {
+    background-color: #242936;
+    border-color: #3e4a5c;
+}
+
+notebook tab {
+    background-color: #242936;
+    color: #707a8c;
+    padding: 6px 10px;
+}
+
+notebook tab:checked {
+    background-color: #2a3040;
+    color: #ffcc66;
+    border-bottom: 2px solid #ffcc66;
+}
+
+
+/* Menus */
+menu,
+.menu,
+popover {
+    background-color: #2a3040;
+    color: #cbccc6;
+
+    border: 1px solid #3e4a5c;
+}
+
+menuitem {
+    color: #cbccc6;
+}
+
+menuitem:hover {
+    background-color: #33415e;
+}
+
+
+/* Combo boxes */
+combobox button {
+    background-color: #2a3040;
+}
+
+
+/* Switch */
+switch {
+    background-color: #3a4152;
+    border-radius: 12px;
+}
+
+switch:checked {
+    background-color: #ffcc66;
+}
+
+switch slider {
+    background-color: #cbccc6;
+}
+
+
+/* Scale / volume slider */
+scale trough {
+    background-color: #191e2a;
+    border: 1px solid #3a4152;
+    border-radius: 6px;
+}
+
+scale highlight {
+    background-color: #ffcc66;
+    border-radius: 6px;
+}
+
+scale slider {
+    background-color: #cbccc6;
+    border: 1px solid #3e4a5c;
+    border-radius: 100%;
+}
+
+
+/* Scrollbar */
+scrollbar {
+    background-color: transparent;
+}
+
+scrollbar slider {
+    background-color: #596477;
+    border-radius: 10px;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrollbar slider:hover {
+    background-color: #73d0ff;
+}
+
+
+/* Separators */
+separator {
+    background-color: #3a4152;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+
+/* Tooltip */
+tooltip {
+    background-color: #2a3040;
+    color: #cbccc6;
+    border: 1px solid #3e4a5c;
+}
+
+
+/* Selection */
+selection {
+    background-color: #ffcc66;
+    color: #1f2430;
+}
+
+/* Bottom action bars / toolbars */
+actionbar,
+.action-bar,
+toolbar,
+.toolbar {
+    background-image: none;
+    background-color: #242936;
+    color: #cbccc6;
+
+    border-top: 1px solid #3e4a5c;
+    box-shadow: none;
+}
+
+/* Buttons inside action bars */
+actionbar button,
+toolbar button {
+    background-image: none;
+    background-color: #2a3040;
+    color: #cbccc6;
+
+    border: 1px solid #3e4a5c;
+    box-shadow: none;
+}
+
+actionbar button:hover,
+toolbar button:hover {
+    background-color: #343c4d;
+    border-color: #73d0ff;
+}
+
+actionbar button:active,
+toolbar button:active {
+    background-color: #ffcc66;
+    color: #1f2430;
+}

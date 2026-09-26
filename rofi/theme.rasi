@@ -1,0 +1,86 @@
+* {
+    font: "JetBrainsMono Nerd Font 13";
+
+    bg:       #1F2430F5;
+    surface:  #242936;
+    raised:   #2A3040;
+    border:   #3A4152;
+
+    fg:       #CBCCC6;
+    muted:    #707A8C;
+
+    yellow:   #FFCC66;
+    orange:   #FFAD66;
+    blue:     #73D0FF;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 520px;
+
+    border: 2px;
+    border-color: @border;
+    border-radius: 12px;
+
+    background-color: @bg;
+    padding: 12px;
+}
+
+mainbox {
+    spacing: 10px;
+}
+
+inputbar {
+    padding: 12px;
+
+    border: 1px;
+    border-color: @border;
+    border-radius: 8px;
+
+    background-color: @surface;
+
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @yellow;
+    margin: 0 10px 0 0;
+}
+
+entry {
+    text-color: @fg;
+    placeholder: "Search...";
+    placeholder-color: @muted;
+}
+
+listview {
+    lines: 7;
+    columns: 1;
+
+    spacing: 4px;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px;
+    border-radius: 7px;
+
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @raised;
+    text-color: @yellow;
+}
+
+element-icon {
+    size: 28px;
+    margin: 0 10px 0 0;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+

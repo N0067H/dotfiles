@@ -1,0 +1,161 @@
+/* ================================
+   Ayu Mirage — Firefox
+   ================================ */
+
+:root {
+    --ayu-bg:      #1f2430;
+    --ayu-surface: #242936;
+    --ayu-raised:  #2a3040;
+    --ayu-hover:   #343c4d;
+    --ayu-border:  #3e4a5c;
+
+    --ayu-fg:      #cbccc6;
+    --ayu-muted:   #707a8c;
+
+    --ayu-yellow:  #ffcc66;
+    --ayu-blue:    #73d0ff;
+    --ayu-cyan:    #95e6cb;
+    --ayu-red:     #f28779;
+}
+
+
+/* ── Main browser chrome ── */
+
+#navigator-toolbox {
+    background: var(--ayu-bg) !important;
+    color: var(--ayu-fg) !important;
+    border-bottom: 1px solid var(--ayu-border) !important;
+}
+
+
+/* ── Tabs ── */
+
+#TabsToolbar {
+    background: var(--ayu-bg) !important;
+}
+
+.tabbrowser-tab .tab-background {
+    background: transparent !important;
+    border-radius: 7px 7px 0 0 !important;
+    margin-block: 3px 0 !important;
+}
+
+.tabbrowser-tab:hover .tab-background {
+    background: var(--ayu-raised) !important;
+}
+
+.tabbrowser-tab[selected] .tab-background {
+    background: var(--ayu-surface) !important;
+    box-shadow:
+        inset 0 2px var(--ayu-yellow) !important;
+}
+
+.tab-label {
+    color: var(--ayu-muted) !important;
+}
+
+.tabbrowser-tab[selected] .tab-label {
+    color: var(--ayu-fg) !important;
+}
+
+
+/* ── Navigation toolbar ── */
+
+#nav-bar {
+    background: var(--ayu-surface) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* ── URL bar ── */
+
+#urlbar-background {
+    background: #191e2a !important;
+    border: 1px solid var(--ayu-border) !important;
+    border-radius: 7px !important;
+    box-shadow: none !important;
+}
+
+#urlbar:hover #urlbar-background {
+    border-color: var(--ayu-blue) !important;
+}
+
+#urlbar[focused] #urlbar-background {
+    border-color: var(--ayu-yellow) !important;
+    box-shadow:
+        0 0 0 1px var(--ayu-yellow) !important;
+}
+
+#urlbar-input {
+    color: var(--ayu-fg) !important;
+}
+
+
+/* ── Toolbar buttons ── */
+
+toolbarbutton {
+    color: var(--ayu-fg) !important;
+}
+
+toolbarbutton:hover > .toolbarbutton-icon,
+toolbarbutton:hover > .toolbarbutton-badge-stack {
+    background: var(--ayu-hover) !important;
+}
+
+
+/* ── Bookmarks bar ── */
+
+#PersonalToolbar {
+    background: var(--ayu-surface) !important;
+    color: var(--ayu-fg) !important;
+    border-top: 1px solid var(--ayu-border) !important;
+}
+
+
+/* ── Menus / popups ── */
+
+menupopup,
+panel {
+    --panel-background: var(--ayu-raised) !important;
+    --panel-color: var(--ayu-fg) !important;
+    --panel-border-color: var(--ayu-border) !important;
+}
+
+menupopup {
+    background: var(--ayu-raised) !important;
+    color: var(--ayu-fg) !important;
+}
+
+menu:hover,
+menuitem:hover {
+    background: #33415e !important;
+    color: white !important;
+}
+
+
+/* ── Sidebar ── */
+
+#sidebar-box {
+    background: var(--ayu-surface) !important;
+    color: var(--ayu-fg) !important;
+    border-right: 1px solid var(--ayu-border) !important;
+}
+
+
+/* ── Find bar ── */
+
+findbar {
+    background: var(--ayu-surface) !important;
+    color: var(--ayu-fg) !important;
+    border-top: 1px solid var(--ayu-border) !important;
+}
+
+
+/* ── Status / notification areas ── */
+
+notification-message {
+    background: var(--ayu-raised) !important;
+    color: var(--ayu-fg) !important;
+}
+

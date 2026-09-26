@@ -1,0 +1,74 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 11px;
+    color: #cbccc6;
+}
+
+.control-center {
+    background: #1f2430;
+    border: 1px solid #3e4a5c;
+    border-radius: 12px;
+}
+
+.notification-row {
+    outline: none;
+}
+
+.notification {
+    background: #242936;
+    border: 1px solid #3e4a5c;
+    border-radius: 9px;
+    margin: 6px;
+}
+
+.notification:hover {
+    background: #2a3040;
+    border-color: #73d0ff;
+}
+
+.notification-content {
+    background: transparent;
+}
+
+.summary {
+    color: #ffcc66;
+    font-weight: bold;
+}
+
+.body {
+    color: #cbccc6;
+}
+
+.time {
+    color: #707a8c;
+}
+
+.control-center .notification {
+    background: #242936;
+}
+
+.widget-title {
+    color: #cbccc6;
+    margin: 15px;
+    font-weight: bold;
+}
+
+.widget-title > button {
+    background: #2a3040;
+    color: #cbccc6;
+    border: 1px solid #3e4a5c;
+    border-radius: 6px;
+}
+
+.widget-title > button:hover {
+    border-color: #ffcc66;
+}
+
+.widget-dnd {
+    margin: 8px 12px;
+}
+
+.widget-dnd > switch:checked {
+    background: #ffcc66;
+}
+
