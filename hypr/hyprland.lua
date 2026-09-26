@@ -35,8 +35,8 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "dolphin"
-local menu        = "hyprlauncher"
+local fileManager = "nautilus"
+local menu        = "rofi -show drun"
 
 
 -------------------
@@ -266,9 +266,9 @@ hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
@@ -285,7 +285,7 @@ hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 -- Help hotkey
 hl.bind(
     mainMod .. " + H",
-    hl.dsp.exec_cmd("/home/noobth/.config/hypr/scripts/keybind-help.sh")
+    hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/keybind-help.sh")
 )
 
 -- Switch workspaces with mainMod + [0-9]
@@ -305,17 +305,17 @@ end)
 -- Screenshot
 hl.bind(
     "Print",
-    hl.dsp.exec_cmd("hyprshot -m region -o /home/noobth/Pictures/Screenshots")
+    hl.dsp.exec_cmd("hyprshot -m region -o $HOME/Pictures/Screenshots")
 )
 
 hl.bind(
     mainMod .. " + Print",
-    hl.dsp.exec_cmd("hyprshot -m window -o /home/noobth/Pictures/Screenshots")
+    hl.dsp.exec_cmd("hyprshot -m window -o $HOME/Pictures/Screenshots")
 )
 
 hl.bind(
     mainMod .. " + SHIFT + Print",
-    hl.dsp.exec_cmd("hyprshot -m output -o /home/noobth/Pictures/Screenshots")
+    hl.dsp.exec_cmd("hyprshot -m output -o $HOME/Pictures/Screenshots")
 )
 
 -- Clipboard
