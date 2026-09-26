@@ -1,0 +1,51 @@
+add_newline = true
+
+format = """
+[╭─](#707A8C)$directory$git_branch$git_status$rust$golang$cpp$nix_shell
+[╰─](#707A8C)$character"""
+
+[directory]
+style = "bold #73D0FF"
+format = "[ 󰉋 $path ]($style)"
+truncation_length = 4
+truncate_to_repo = false
+
+[git_branch]
+symbol = "󰘬 "
+style = "bold #D4BFFF"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bold #FFCC66"
+format = "[$all_status$ahead_behind]($style)"
+
+[character]
+success_symbol = "[❯](bold #BAE67E)"
+error_symbol = "[❯](bold #F28779)"
+vimcmd_symbol = "[❮](bold #73D0FF)"
+
+[rust]
+symbol = "󱘗 "
+style = "bold #FFAD66"
+format = "[ $symbol$version]($style)"
+
+[golang]
+symbol = "󰟓 "
+style = "bold #73D0FF"
+format = "[ $symbol$version]($style)"
+
+[cpp]
+symbol = " "
+style = "bold #73D0FF"
+format = "[ $symbol$version]($style)"
+
+[nix_shell]
+symbol = "󱄅 "
+style = "bold #95E6CB"
+format = "[ $symbol$name]($style)"
+
+[cmd_duration]
+disabled = true
+
+[package]
+disabled = true
