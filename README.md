@@ -1,6 +1,6 @@
 # Dotfiles
 
-My simple NixOS and Hyprland setup.
+My simple NixOS and Hyprland setup.\
 This setup is my attempt to recreate the **Ayu Mirage** theme as closely as possible.
 
 ## Packages
