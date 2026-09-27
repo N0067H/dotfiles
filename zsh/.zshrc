@@ -43,3 +43,6 @@ alias nrt='sudo nixos-rebuild test'
 
 # dotfiles
 alias dots='cd ~/dev/dotfiles'
+
+# User binaries
+export PATH="$HOME/.local/bin:$PATH"
