@@ -131,6 +131,7 @@
     slurp
     grim
     fastfetch
+    delta
 
     # Hyprland
     kitty
@@ -161,6 +162,12 @@
     fastfetch
     ripgrep
     fd
+    jq
+    yq-go
+    dust
+    duf
+    procs
+    tldr
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
