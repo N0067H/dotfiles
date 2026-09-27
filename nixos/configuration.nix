@@ -150,6 +150,7 @@
     zsh
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-fzf-tab
     zoxide
     fzf
     eza
