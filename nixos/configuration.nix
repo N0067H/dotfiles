@@ -148,6 +148,8 @@
     # Shell
     starship
     zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
     zoxide
     fzf
     eza

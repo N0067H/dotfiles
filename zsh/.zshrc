@@ -38,8 +38,8 @@ alias gp='git push'
 alias gl='git log --oneline --graph --decorate'
 
 # NixOS
-alias nrs='sudo nixos-rebuild switch'
-alias nrt='sudo nixos-rebuild test'
+alias nrs='sudo nixos-rebuild switch --flake ~/dev/dotfiles#nixos'
+alias nrt='sudo nixos-rebuild test --flake ~/dev/dotfiles#nixos'
 
 # dotfiles
 alias dots='cd ~/dev/dotfiles'
