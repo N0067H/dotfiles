@@ -23,7 +23,6 @@ alias ls='eza --icons=always --group-directories-first'
 alias ll='eza -lah --icons=always --group-directories-first --git'
 alias la='eza -a --icons=always --group-directories-first'
 alias tree='eza --tree --icons=always'
-alias cat='bat'
 alias grep='rg'
 
 alias c='clear'
