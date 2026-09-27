@@ -89,7 +89,11 @@
   };
 
   # Zsh
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -148,8 +152,6 @@
     # Shell
     starship
     zsh
-    zsh-autosuggestions
-    zsh-syntax-highlighting
     zsh-fzf-tab
     zoxide
     fzf
