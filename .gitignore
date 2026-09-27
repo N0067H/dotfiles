@@ -9,4 +9,3 @@
 secrets/
 .env
 .env.*
-nixos/hardware-configuration.nix

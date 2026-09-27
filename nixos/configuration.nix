@@ -85,7 +85,11 @@
     packages = with pkgs; [
     #  thunderbird
     ];
+    shell = pkgs.zsh;
   };
+
+  # Zsh
+  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -140,6 +144,18 @@
     nautilus
     brightnessctl
     nerd-fonts.jetbrains-mono
+  
+    # Shell
+    starship
+    zsh
+    zoxide
+    fzf
+    eza
+    bat
+    btop
+    fastfetch
+    ripgrep
+    fd
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
