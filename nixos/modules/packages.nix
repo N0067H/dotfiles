@@ -69,7 +69,6 @@
     tldr
 
     # Util
-    bottles
     rose-pine-hyprcursor  
   ];
 }

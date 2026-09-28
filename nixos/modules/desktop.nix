@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  # Package
+  services.flatpak.enable = true;
+  
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
