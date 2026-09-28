@@ -1,177 +1,206 @@
 * {
     border: none;
     border-radius: 0;
-
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(31, 36, 48, 0.96);
-    color: #CBCCC6;
-
-    border-bottom: 1px solid #3A4152;
+    background: rgba(11, 16, 21, 0.97);
+    color: #D6DEE3;
+    border-bottom: 1px solid #26343D;
 }
 
-/* ─────────────────────────────
- * Launcher
- * ───────────────────────────── */
+/* ── /dev/crab ───────────────────────────── */
 
 #custom-launcher {
-    padding: 0 14px;
-    margin-left: 4px;
-
-    color: #FFCC66;
-    font-size: 18px;
+    padding: 0 16px 0 12px;
+    color: #FF6F61;
+    font-weight: 700;
 }
 
-/* ─────────────────────────────
- * Workspaces
- * ───────────────────────────── */
+#custom-launcher:hover {
+    color: #FF9A8F;
+}
+
+/* ── workspaces ──────────────────────────── */
 
 #workspaces {
-    margin-left: 2px;
+    margin: 0;
 }
 
 #workspaces button {
-    min-width: 26px;
-
-    margin: 5px 2px;
+    min-width: 28px;
     padding: 0 6px;
+    margin: 0 2px;
 
-    color: #707A8C;
+    color: #667985;
     background: transparent;
 
-    border-radius: 7px;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
 
-    transition: all 0.2s ease;
+    transition:
+        color 120ms ease,
+        border-color 120ms ease;
 }
 
 #workspaces button:hover {
-    color: #CBCCC6;
-    background: #2A3040;
+    color: #D6DEE3;
+    background: transparent;
 }
 
 #workspaces button.active {
-    min-width: 34px;
-
-    color: #1F2430;
-    background: #FFCC66;
+    color: #D6DEE3;
+    background: transparent;
+    border-bottom: 2px solid #FF6F61;
 }
 
 #workspaces button.urgent {
-    color: #1F2430;
-    background: #F28779;
+    color: #FF6F61;
+    background: transparent;
 }
 
-/* ─────────────────────────────
- * Active window
- * ───────────────────────────── */
-
-#window {
-    min-width: 230px;
-
-    padding: 0 14px;
-
-    color: #95E6CB;
-}
-
-/* subtle separator */
-#window {
-    border-left: 1px solid #3A4152;
-}
-
-/* ─────────────────────────────
- * Clock
- * ───────────────────────────── */
+/* ── clock ───────────────────────────────── */
 
 #clock {
     padding: 0 16px;
 
-    color: #CBCCC6;
+    color: #D6DEE3;
+    background: transparent;
 
-    border-left: 1px solid #3A4152;
-    border-right: 1px solid #3A4152;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-/* ─────────────────────────────
- * System
- * ───────────────────────────── */
+#clock:hover {
+    color: #FF6F61;
+}
+
+/* ── system telemetry ────────────────────── */
 
 #temperature,
 #cpu,
-#memory,
-#network,
-#pulseaudio,
-#battery,
-#custom-notification {
-    padding: 0 10px;
-    margin: 0;
-
+#memory {
+    padding: 0 8px;
+    color: #A9B7BE;
     background: transparent;
 }
 
 #temperature {
-    color: #FFAD66;
+    margin-left: 8px;
 }
 
 #temperature.critical {
-    color: #F28779;
+    color: #FF6F61;
 }
 
-#cpu {
-    color: #FFCC66;
+#temperature:hover,
+#cpu:hover,
+#memory:hover {
+    color: #55C2B8;
 }
 
+/* subtle separators */
+
+#cpu,
 #memory {
-    color: #D4BFFF;
+    border-left: 1px solid #26343D;
 }
+
+/* ── connectivity ────────────────────────── */
 
 #network {
-    color: #73D0FF;
+    margin-left: 8px;
+    padding: 0 10px;
+
+    color: #55C2B8;
+    background: transparent;
+
+    border-left: 1px solid #26343D;
 }
+
+#network.disconnected {
+    color: #667985;
+}
+
+#network:hover {
+    color: #D6DEE3;
+}
+
+/* ── audio ───────────────────────────────── */
 
 #pulseaudio {
-    color: #95E6CB;
+    padding: 0 10px;
+
+    color: #A9B7BE;
+    background: transparent;
+
+    border-left: 1px solid #26343D;
 }
 
+#pulseaudio.muted {
+    color: #667985;
+}
+
+#pulseaudio:hover {
+    color: #55C2B8;
+}
+
+/* ── power ───────────────────────────────── */
+
 #battery {
-    color: #BAE67E;
+    padding: 0 10px;
+
+    color: #A9B7BE;
+    background: transparent;
+
+    border-left: 1px solid #26343D;
 }
 
 #battery.charging,
 #battery.plugged {
-    color: #73D0FF;
+    color: #55C2B8;
 }
 
 #battery.warning:not(.charging) {
-    color: #FFAD66;
+    color: #F2C572;
 }
 
 #battery.critical:not(.charging) {
-    color: #F28779;
+    color: #FF6F61;
 }
+
+#battery:hover {
+    color: #D6DEE3;
+}
+
+/* ── notifications ───────────────────────── */
 
 #custom-notification {
-    color: #D4BFFF;
-    padding-right: 14px;
+    padding: 0 13px 0 10px;
+
+    color: #667985;
+    background: transparent;
+
+    border-left: 1px solid #26343D;
 }
 
-/* ─────────────────────────────
- * Tooltip
- * ───────────────────────────── */
+#custom-notification:hover {
+    color: #FF6F61;
+}
+
+/* ── tooltip ─────────────────────────────── */
 
 tooltip {
-    background: #242936;
-
-    border: 1px solid #3A4152;
-    border-radius: 8px;
+    background: #111920;
+    border: 1px solid #26343D;
+    border-radius: 4px;
 }
 
 tooltip label {
-    color: #CBCCC6;
-    padding: 6px;
+    padding: 7px;
+    color: #D6DEE3;
 }

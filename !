@@ -1,15 +1,23 @@
+cd ~/dev/dotfiles
+
+cp waybar/config.jsonc waybar/config.jsonc.bak
+
+cat > waybar/config.jsonc <<'EOF'
 {
   "layer": "top",
   "position": "top",
   "height": 36,
   "spacing": 0,
+
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces"
   ],
+
   "modules-center": [
     "clock"
   ],
+
   "modules-right": [
     "temperature",
     "cpu",
@@ -19,11 +27,13 @@
     "battery",
     "custom/notification"
   ],
+
   "custom/launcher": {
     "format": "🦀  /dev/crab",
     "tooltip": false,
     "on-click": "rofi -show drun"
   },
+
   "hyprland/workspaces": {
     "format": "{name}",
     "on-click": "activate",
@@ -31,6 +41,7 @@
       "*": 5
     }
   },
+
   "clock": {
     "interval": 1,
     "format": "{:%b %d · %a    %H:%M}",
@@ -49,22 +60,26 @@
       }
     }
   },
+
   "temperature": {
     "thermal-zone": 7,
     "critical-threshold": 85,
     "format": "TEMP {temperatureC}°",
     "tooltip": false
   },
+
   "cpu": {
     "format": "CPU {usage:02}%",
     "interval": 2,
     "tooltip": false
   },
+
   "memory": {
     "format": "MEM {percentage:02}%",
     "interval": 2,
     "tooltip": false
   },
+
   "network": {
     "format-wifi": "󰤨  {signalStrength}%",
     "format-ethernet": "󰈀  LAN",
@@ -73,6 +88,7 @@
     "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
     "on-click": "nm-connection-editor"
   },
+
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "VOL --",
@@ -80,6 +96,7 @@
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
+
   "battery": {
     "states": {
       "warning": 30,
@@ -90,6 +107,7 @@
     "format-plugged": "BAT {capacity}%",
     "tooltip": true
   },
+
   "custom/notification": {
     "tooltip": true,
     "format": "{icon}",
@@ -107,3 +125,5 @@
     "escape": true
   }
 }
+EOF
+
