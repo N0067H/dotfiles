@@ -1,10 +1,11 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 34,
-  "spacing": 6,
+  "height": 36,
+  "spacing": 0,
 
   "modules-left": [
+    "custom/launcher",
     "hyprland/workspaces"
   ],
 
@@ -13,48 +14,95 @@
   ],
 
   "modules-right": [
+    "temperature",
+    "cpu",
+    "memory",
     "network",
     "pulseaudio",
     "battery",
     "custom/notification"
   ],
 
+  "custom/launcher": {
+    "format": "🦀",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+
   "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "active": "●",
-      "default": "○"
-    },
+    "format": "{name}",
+    "on-click": "activate",
     "persistent-workspaces": {
       "*": 5
     }
   },
 
   "clock": {
-    "format": "{:%a %m/%d  %H:%M}",
-    "tooltip-format": "{:%Y-%m-%d %A}"
+    "interval": 1,
+    "format": "󰥔  {:%a  %m/%d   %H:%M}",
+    "format-alt": "󰃭  {:%Y-%m-%d  %A}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<b>{}</b>",
+        "days": "<span>{}</span>",
+        "weeks": "<span color='#707A8C'>W{}</span>",
+        "weekdays": "<span color='#73D0FF'><b>{}</b></span>",
+        "today": "<span color='#FFCC66'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+
+  "temperature": {
+    "thermal-zone": 7,
+    "critical-threshold": 85,
+    "format": "  {temperatureC}°C",
+    "tooltip": false
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 2,
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "  {percentage}%",
+    "interval": 2,
+    "tooltip": false
   },
 
   "network": {
     "format-wifi": "󰤨  {signalStrength}%",
-    "format-ethernet": "󰈀",
+    "format-ethernet": "󰈀  LAN",
     "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid}\n{ipaddr}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
     "on-click": "nm-connection-editor"
   },
 
   "pulseaudio": {
     "format": "{icon}  {volume}%",
-    "format-muted": "󰝟",
+    "format-muted": "󰝟  muted",
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"]
     },
+    "scroll-step": 5,
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
 
   "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
     "format": "{icon}  {capacity}%",
     "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰚥  {capacity}%",
     "format-icons": [
       "󰁺",
       "󰁻",
@@ -68,6 +116,7 @@
       "󰁹"
     ]
   },
+
   "custom/notification": {
     "tooltip": true,
     "format": "{icon}",
@@ -85,4 +134,3 @@
     "escape": true
   }
 }
-

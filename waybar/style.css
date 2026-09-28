@@ -1,37 +1,63 @@
 * {
     border: none;
     border-radius: 0;
+
     font-family: "JetBrainsMono Nerd Font";
     font-size: 13px;
+    font-weight: 600;
+
     min-height: 0;
 }
 
 window#waybar {
     background: rgba(31, 36, 48, 0.96);
     color: #CBCCC6;
+
     border-bottom: 1px solid #3A4152;
 }
 
+/* ─────────────────────────────
+ * Launcher
+ * ───────────────────────────── */
+
+#custom-launcher {
+    padding: 0 14px;
+    margin-left: 4px;
+
+    color: #FFCC66;
+    font-size: 18px;
+}
+
+/* ─────────────────────────────
+ * Workspaces
+ * ───────────────────────────── */
+
 #workspaces {
-    margin-left: 8px;
+    margin-left: 2px;
 }
 
 #workspaces button {
-    padding: 0 7px;
-    margin: 4px 2px;
+    min-width: 26px;
+
+    margin: 5px 2px;
+    padding: 0 6px;
 
     color: #707A8C;
     background: transparent;
 
-    border-radius: 6px;
+    border-radius: 7px;
+
+    transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
     color: #CBCCC6;
-    background: #242936;
+    background: #2A3040;
 }
 
 #workspaces button.active {
+    min-width: 34px;
+
     color: #1F2430;
     background: #FFCC66;
 }
@@ -41,22 +67,67 @@ window#waybar {
     background: #F28779;
 }
 
-#clock {
-    color: #CBCCC6;
-    font-weight: 600;
-    padding: 0 10px;
+/* ─────────────────────────────
+ * Active window
+ * ───────────────────────────── */
+
+#window {
+    min-width: 230px;
+
+    padding: 0 14px;
+
+    color: #95E6CB;
 }
 
-#network,
-#pulseaudio,
-#battery {
-    padding: 0 9px;
-    margin: 4px 2px;
+/* subtle separator */
+#window {
+    border-left: 1px solid #3A4152;
+}
+
+/* ─────────────────────────────
+ * Clock
+ * ───────────────────────────── */
+
+#clock {
+    padding: 0 16px;
 
     color: #CBCCC6;
-    background: #242936;
 
-    border-radius: 6px;
+    border-left: 1px solid #3A4152;
+    border-right: 1px solid #3A4152;
+}
+
+/* ─────────────────────────────
+ * System
+ * ───────────────────────────── */
+
+#temperature,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#custom-notification {
+    padding: 0 10px;
+    margin: 0;
+
+    background: transparent;
+}
+
+#temperature {
+    color: #FFAD66;
+}
+
+#temperature.critical {
+    color: #F28779;
+}
+
+#cpu {
+    color: #FFCC66;
+}
+
+#memory {
+    color: #D4BFFF;
 }
 
 #network {
@@ -69,22 +140,38 @@ window#waybar {
 
 #battery {
     color: #BAE67E;
-    margin-right: 8px;
 }
 
-#battery.warning {
-    color: #FFCC66;
+#battery.charging,
+#battery.plugged {
+    color: #73D0FF;
 }
 
-#battery.critical {
+#battery.warning:not(.charging) {
+    color: #FFAD66;
+}
+
+#battery.critical:not(.charging) {
     color: #F28779;
 }
 
 #custom-notification {
-    padding: 0 9px;
-    margin: 4px 2px;
-    color: #ffcc66;
-    background: #242936;
-    border-radius: 6px;
+    color: #D4BFFF;
+    padding-right: 14px;
 }
 
+/* ─────────────────────────────
+ * Tooltip
+ * ───────────────────────────── */
+
+tooltip {
+    background: #242936;
+
+    border: 1px solid #3A4152;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #CBCCC6;
+    padding: 6px;
+}
