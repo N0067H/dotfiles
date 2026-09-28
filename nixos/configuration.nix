@@ -89,7 +89,6 @@
     packages = with pkgs; [
     #  thunderbird
     ];
-    shell = pkgs.zsh;
   };
 
   # Zsh
