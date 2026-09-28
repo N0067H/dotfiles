@@ -70,5 +70,6 @@
 
     # Util
     bottles
+    rose-pine-hyprcursor  
   ];
 }
