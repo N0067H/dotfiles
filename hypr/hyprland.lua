@@ -279,6 +279,12 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 
+-- Display
+hl.bind(
+    mainMod .. " + SHIFT + P",
+    hl.dsp.exec_cmd("~/dev/dotfiles/hypr/scripts/display-menu.sh")
+)
+
 -- Lock
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
