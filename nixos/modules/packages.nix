@@ -67,5 +67,8 @@
     duf
     procs
     tldr
+
+    # Util
+    bottles
   ];
 }
