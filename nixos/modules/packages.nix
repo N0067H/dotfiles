@@ -69,6 +69,8 @@
     tldr
 
     # Util
-    rose-pine-hyprcursor  
+    rose-pine-hyprcursor 
+    openssl
+    openssl.dev 
   ];
 }
