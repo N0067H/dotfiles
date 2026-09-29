@@ -13,6 +13,13 @@
     ./modules/shell.nix
   ];
 
+  # Postgresql
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    ensureDatabases = [ "mydatabase" ];
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -113,6 +120,7 @@
     git
     gcc
     pkg-config
+    postgresql_16
 
     # SNS
     discord-ptb
