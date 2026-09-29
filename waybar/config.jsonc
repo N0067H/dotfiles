@@ -3,13 +3,16 @@
   "position": "top",
   "height": 36,
   "spacing": 0,
+
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces"
   ],
+
   "modules-center": [
     "clock"
   ],
+
   "modules-right": [
     "temperature",
     "cpu",
@@ -19,60 +22,54 @@
     "battery",
     "custom/notification"
   ],
+
   "custom/launcher": {
-    "format": "🦀  /dev/crab",
+    "format": "🦀  /nooth",
     "tooltip": false,
     "on-click": "rofi -show drun"
   },
+
   "hyprland/workspaces": {
     "format": "{name}",
-    "on-click": "activate",
     "persistent-workspaces": {
       "*": 5
     }
   },
+
   "clock": {
     "interval": 1,
     "format": "{:%b %d · %a    %H:%M}",
-    "format-alt": "{:%Y.%m.%d · %A}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "month",
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<b>{}</b>",
-        "days": "<span>{}</span>",
-        "weeks": "<span color='#667985'>W{}</span>",
-        "weekdays": "<span color='#55C2B8'><b>{}</b></span>",
-        "today": "<span color='#FF6F61'><b><u>{}</u></b></span>"
-      }
-    }
+    "tooltip": false
   },
+
   "temperature": {
     "thermal-zone": 7,
     "critical-threshold": 85,
     "format": "TEMP {temperatureC}°",
     "tooltip": false
   },
+
   "cpu": {
     "format": "CPU {usage:02}%",
     "interval": 2,
     "tooltip": false
   },
+
   "memory": {
     "format": "MEM {percentage:02}%",
     "interval": 2,
     "tooltip": false
   },
+
   "network": {
-    "format-wifi": "󰤨  {signalStrength}%",
-    "format-ethernet": "󰈀  LAN",
+    "format-wifi": "NET {signalStrength}%",
+    "format-ethernet": "NET LAN",
     "format-disconnected": "NET --",
     "tooltip-format-wifi": "{essid}\n{ipaddr}",
     "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
     "on-click": "nm-connection-editor"
   },
+
   "pulseaudio": {
     "format": "VOL {volume}%",
     "format-muted": "VOL --",
@@ -80,6 +77,7 @@
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
+
   "battery": {
     "states": {
       "warning": 30,
@@ -90,6 +88,7 @@
     "format-plugged": "BAT {capacity}%",
     "tooltip": true
   },
+
   "custom/notification": {
     "tooltip": true,
     "format": "{icon}",

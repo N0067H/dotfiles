@@ -42,9 +42,6 @@ window#waybar {
     border-radius: 0;
     border-bottom: 2px solid transparent;
 
-    transition:
-        color 120ms ease,
-        border-color 120ms ease;
 }
 
 #workspaces button:hover {
@@ -204,3 +201,40 @@ tooltip label {
     padding: 7px;
     color: #D6DEE3;
 }
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+    min-width: 28px;
+    padding: 0 2px;
+    color: #667985;
+}
+
+#custom-ws1:hover,
+#custom-ws2:hover,
+#custom-ws3:hover,
+#custom-ws4:hover,
+#custom-ws5:hover {
+    color: #D6DEE3;
+}
+
+#custom-ws1.active,
+#custom-ws2.active,
+#custom-ws3.active,
+#custom-ws4.active,
+#custom-ws5.active {
+    color: #D6DEE3;
+    border-bottom: 2px solid #FF6F61;
+}
+
+#custom-ws1.inactive,
+#custom-ws2.inactive,
+#custom-ws3.inactive,
+#custom-ws4.inactive,
+#custom-ws5.inactive {
+    color: #667985;
+    border-bottom: 2px solid transparent;
+}
+
