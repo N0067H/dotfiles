@@ -1,4 +1,5 @@
 hl.on("hyprland.start", function()
+    hl.exec_cmd("hyprpaper -c ~/.config/hypr/hyprpaper.conf")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("swaync")
