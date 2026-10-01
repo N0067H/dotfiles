@@ -69,6 +69,7 @@
     tldr
 
     # Util
+    ruby
     rose-pine-hyprcursor 
     openssl
     openssl.dev 
