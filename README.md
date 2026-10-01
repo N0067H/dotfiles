@@ -188,6 +188,52 @@ The system also includes several modern CLI utilities:
 | `btop` | System resource monitor |
 | `fastfetch` | System information |
 
+## Kubernetes Development
+
+`nixos/modules/kubernetes.nix` installs `kubectl`, Helm (`helm`), kind,
+k9s, kubectx/kubens, Kustomize, Skaffold, Stern, and kubeconform.
+Versions follow the existing `flake.lock`. Docker is managed by
+`nixos/modules/docker.nix`, including membership of `noobth` in the Docker group.
+
+Apply the tools to this machine, then open a new terminal:
+
+```bash
+sudo nixos-rebuild switch --flake ~/dev/dotfiles#nixos
+cd ~/dev/dotfiles
+just k8s-up
+just k8s-status
+```
+
+If Docker reports permission denied, log out and back in to refresh group
+membership. Check `docker info` before creating the cluster.
+
+The `dev` cluster runs one control-plane node with a pinned Kubernetes 1.35.0
+image supported by the locked kind 0.31.0 release. Its API listens on localhost.
+See the [kind release notes](https://github.com/kubernetes-sigs/kind/releases/tag/v0.31.0)
+for the image digest. Cluster creation is explicit; it does not run on boot.
+kind saves access credentials to your kubeconfig (normally `~/.kube/config`)
+and selects the `kind-dev` context. Keep kubeconfig outside this repository.
+
+```bash
+just k8s-ui                          # k9s for kind-dev
+docker build -t my-app:dev /path/to/app
+just k8s-load my-app:dev              # make the image available to the node
+kubectl --context kind-dev apply -f /path/to/app/k8s/
+kubectl --context kind-dev port-forward service/my-app 8080:80
+stern --context kind-dev my-app
+```
+
+Use `image: my-app:dev` and `imagePullPolicy: IfNotPresent` in your development
+Deployment to use the loaded image. Port forwarding exposes the service at
+`http://localhost:8080` while the command runs. See the
+[kind quick start](https://kind.sigs.k8s.io/docs/user/quick-start/)
+for the image-loading workflow.
+
+`k` aliases `kubectl`, `kctx` switches contexts, and `kns` switches namespaces.
+Always check the context before applying manifests to another cluster.
+Run `just k8s-down` to delete the local cluster, including its workloads and
+data; run `just k8s-up` to create it again.
+
 ## Hyprland
 
 Hyprland is the primary Wayland compositor.
@@ -353,4 +399,3 @@ Some values are intentionally specific to:
 - my preferred applications and keybindings
 
 Review the configuration before reusing it on another system.
-

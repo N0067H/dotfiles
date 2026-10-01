@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./modules/desktop.nix
     ./modules/docker.nix
+    ./modules/kubernetes.nix
     ./modules/packages.nix
     ./modules/shell.nix
   ];
@@ -272,4 +273,3 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-

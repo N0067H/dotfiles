@@ -42,5 +42,10 @@ alias nrt='sudo nixos-rebuild test --flake ~/dev/dotfiles#nixos'
 # dotfiles
 alias dots='cd ~/dev/dotfiles'
 
+# Kubernetes (kubectl ships Zsh completion through Nixpkgs)
+alias k='kubectl'
+alias kctx='kubectx'
+alias kns='kubens'
+
 # User binaries
 export PATH="$HOME/.local/bin:$PATH"
