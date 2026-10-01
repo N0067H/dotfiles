@@ -9,7 +9,13 @@
     rustup
     git
     gcc
+    clang
+    clang-tools
     pkg-config
+    ruby
+    just
+    helix
+    llvmPackages.lldb
 
     # SNS
     discord-ptb
@@ -69,8 +75,6 @@
     tldr
 
     # Util
-    just
-    ruby
     rose-pine-hyprcursor 
     openssl
     openssl.dev 
