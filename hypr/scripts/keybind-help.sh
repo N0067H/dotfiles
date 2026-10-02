@@ -22,6 +22,8 @@ cat <<'EOF' | rofi -dmenu -i -p '󰌌  Keybindings' -no-custom
 󰣆  Super + S                 Special Workspace
 
 ━━ System ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+󰍹  Super + Shift + P         Display Mode
+󰍹  Super + Ctrl + Shift + P  Restore Laptop Display
 󰌾  Super + L                 Lock
 󰕾  Volume Keys               Volume
 󰃠  Brightness Keys           Brightness

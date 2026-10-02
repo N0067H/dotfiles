@@ -281,6 +281,10 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 
 -- Display
 hl.bind(
+    mainMod .. " + CTRL + SHIFT + P",
+    hl.dsp.exec_cmd("~/dev/dotfiles/hypr/scripts/display-menu.sh --recover")
+)
+hl.bind(
     mainMod .. " + SHIFT + P",
     hl.dsp.exec_cmd("~/dev/dotfiles/hypr/scripts/display-menu.sh")
 )
