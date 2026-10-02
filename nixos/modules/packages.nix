@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     # Dev
+    nodejs
     vscode
     rustup
     git
