@@ -79,5 +79,6 @@
     rose-pine-hyprcursor 
     openssl
     openssl.dev 
+    unzip
   ];
 }
