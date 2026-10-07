@@ -13,6 +13,7 @@
     clang
     clang-tools
     pkg-config
+    protobuf
     ruby
     just
     helix
