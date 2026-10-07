@@ -38,6 +38,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Cloudflare WARP daemon and CLI.
+  services.cloudflare-warp.enable = true;
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

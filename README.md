@@ -113,6 +113,28 @@ nrs
 
 Test first, then switch once the configuration works.
 
+## Cloudflare WARP
+
+`services.cloudflare-warp.enable` installs `warp-cli` and starts the WARP
+daemon on boot. Apply the configuration:
+
+```bash
+sudo nixos-rebuild switch --flake ~/dev/dotfiles#nixos
+```
+
+Register once, accept the terms when prompted, and connect:
+
+```bash
+warp-cli registration new
+warp-cli connect
+warp-cli status
+```
+
+Check the connection with `curl https://www.cloudflare.com/cdn-cgi/trace`;
+`warp=on` confirms WARP is active. Use `warp-cli disconnect` to disconnect.
+See the [Cloudflare Linux guide](https://developers.cloudflare.com/warp-client/get-started/linux/).
+Registration data stays in `/var/lib/cloudflare-warp`, outside this repository.
+
 ## Dotfile Management
 
 Application configuration files are stored in this repository and linked into `~/.config`.
