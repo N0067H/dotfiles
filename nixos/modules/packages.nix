@@ -8,6 +8,7 @@
     nodejs
     vscode
     rustup
+    go
     git
     gcc
     clang
