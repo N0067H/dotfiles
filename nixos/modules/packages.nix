@@ -35,6 +35,8 @@
     # Utilities
     vim
     wget
+    tailscale
+    headscale
     setxkbmap
     wl-clipboard
     cliphist

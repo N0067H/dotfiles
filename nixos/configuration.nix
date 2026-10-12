@@ -38,6 +38,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.tailscale.enable = true;
+
   # Cloudflare WARP daemon and CLI.
   services.cloudflare-warp.enable = true;
 
