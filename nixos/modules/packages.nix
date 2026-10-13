@@ -10,6 +10,7 @@
     rustup
     go
     git
+    gh
     gcc
     clang
     clang-tools
