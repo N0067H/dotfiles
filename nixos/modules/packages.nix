@@ -21,6 +21,7 @@
     helix
     llvmPackages.lldb
     qemu
+    k6
 
     # SNS
     discord-ptb
