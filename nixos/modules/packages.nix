@@ -22,6 +22,7 @@
     llvmPackages.lldb
     qemu
     k6
+    teleport
 
     # SNS
     discord-ptb
