@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -46,6 +46,8 @@
     slurp
     grim
     delta
+    config.boot.kernelPackages.perf
+    file
 
     # Hyprland
     kitty
