@@ -26,6 +26,7 @@ alias tree='eza --tree --icons=always'
 
 alias c='clear'
 alias ff='fastfetch'
+alias code='"$HOME/.local/share/vscode-vibrancy/current/bin/code"'
 
 # Git
 alias gs='git status'
