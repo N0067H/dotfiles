@@ -8,9 +8,12 @@
 }
 
 window#waybar {
-    background: rgba(11, 16, 21, 0.97);
+    /* Match focused kitty: background_opacity 0.40 × window opacity 0.85. */
+    background: rgba(11, 16, 21, 0.34);
+    background-image: none;
     color: #D6DEE3;
-    border-bottom: 1px solid #26343D;
+    border: 1px solid #3a4152;
+    border-radius: 12px;
 }
 
 /* ── /dev/crab ───────────────────────────── */
