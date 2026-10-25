@@ -241,7 +241,7 @@ hl.config({
         touchpad = {
             natural_scroll = true,
      	    tap_to_click = true,
- 	    drag_lock = true,
+            drag_lock = false,
   	    scroll_factor = 0.7,
         },
     },
@@ -351,6 +351,8 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+-- Resize with one-finger touchpad motion while holding SUPER + left Alt.
+hl.bind(mainMod .. " + ALT_L", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
