@@ -313,9 +313,8 @@ The custom theme inherits Ayu Mirage, with saturated syntax colors and brighter
 body text and comments. Font weight remains inherited from the original theme.
 The Helix runtime and language-server data stay outside the repository.
 
-VS Code user settings live in `vscode/settings.json`. Color overrides for
-**Ayu Mirage Bordered** match the Helix palette, including semantic highlighting.
-The existing transparency and other editor preferences are preserved.
+VS Code user settings live in `vscode/settings.json`, preserving the original
+**Ayu Mirage Bordered** theme, transparency, and editor preferences.
 Install the `teabyii.ayu` extension when setting up a new machine.
 
 Run `./setup.sh --link` to link the editor settings (and other dotfiles), backing

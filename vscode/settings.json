@@ -47,12 +47,7 @@
         "notificationCenterHeader.background": "#1e1e1ee6",
         "menu.background": "#1e1e1ee6",
         "quickInput.background": "#1e1e1ee6",
-        "editor.lineHighlightBorder": "#00000000",
-        "[Ayu Mirage Bordered]": {
-            "editor.foreground": "#F2F0EA",
-            "editorLineNumber.foreground": "#626C7E",
-            "editorLineNumber.activeForeground": "#DCE0E7"
-        }
+        "editor.lineHighlightBorder": "#00000000"
     },
     "terminal.integrated.gpuAcceleration": "off",
     "window.autoDetectColorScheme": false,
@@ -62,116 +57,5 @@
     "files.watcherExclude": {
         "**/target/**": true,
         "build/**": true
-    },
-    "editor.tokenColorCustomizations": {
-        "[Ayu Mirage Bordered]": {
-            "comments": "#A0AABA",
-            "strings": "#BAF956",
-            "keywords": "#FF9D4A",
-            "numbers": "#D4A2FF",
-            "types": "#4DC9FF",
-            "functions": "#FFC654",
-            "variables": "#F2F0EA",
-            "textMateRules": [
-                {
-                    "scope": [
-                        "keyword.control",
-                        "keyword.control.import",
-                        "keyword.control.export"
-                    ],
-                    "settings": {
-                        "foreground": "#FFC654"
-                    }
-                },
-                {
-                    "scope": [
-                        "constant.language",
-                        "constant.character",
-                        "constant.other"
-                    ],
-                    "settings": {
-                        "foreground": "#D4A2FF"
-                    }
-                },
-                {
-                    "scope": [
-                        "keyword.operator"
-                    ],
-                    "settings": {
-                        "foreground": "#FF9D4A"
-                    }
-                },
-                {
-                    "scope": [
-                        "entity.name.namespace",
-                        "entity.name.tag"
-                    ],
-                    "settings": {
-                        "foreground": "#4DC9FF"
-                    }
-                }
-            ]
-        }
-    },
-    "editor.semanticTokenColorCustomizations": {
-        "[Ayu Mirage Bordered]": {
-            "rules": {
-                "variable": {
-                    "foreground": "#F2F0EA"
-                },
-                "parameter": {
-                    "foreground": "#F2F0EA"
-                },
-                "property": {
-                    "foreground": "#F2F0EA"
-                },
-                "type": {
-                    "foreground": "#4DC9FF"
-                },
-                "class": {
-                    "foreground": "#4DC9FF"
-                },
-                "struct": {
-                    "foreground": "#4DC9FF"
-                },
-                "enum": {
-                    "foreground": "#4DC9FF"
-                },
-                "interface": {
-                    "foreground": "#4DC9FF"
-                },
-                "typeParameter": {
-                    "foreground": "#4DC9FF"
-                },
-                "namespace": {
-                    "foreground": "#4DC9FF"
-                },
-                "function": {
-                    "foreground": "#FFC654"
-                },
-                "method": {
-                    "foreground": "#FFC654"
-                },
-                "enumMember": {
-                    "foreground": "#D4A2FF"
-                },
-                "number": {
-                    "foreground": "#D4A2FF"
-                },
-                "string": {
-                    "foreground": "#BAF956"
-                },
-                "keyword": {
-                    "foreground": "#FF9D4A"
-                },
-                "operator": {
-                    "foreground": "#FF9D4A"
-                },
-                "comment": {
-                    "foreground": "#A0AABA"
-                }
-            }
-        }
-    },
-    "editor.fontLigatures": false
+    }
 }
