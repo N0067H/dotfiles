@@ -1,7 +1,7 @@
 theme = "ayu_mirage_bright"
 
 [editor]
-line-number = "relative"
+line-number = "absolute"
 cursorline = true
 bufferline = "multiple"
 color-modes = true
