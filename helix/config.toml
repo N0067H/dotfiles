@@ -1,0 +1,31 @@
+theme = "ayu_mirage_bright"
+
+[editor]
+line-number = "relative"
+cursorline = true
+bufferline = "multiple"
+color-modes = true
+auto-format = true
+completion-trigger-len = 1
+true-color = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "╎"
+
+[editor.lsp]
+display-inlay-hints = false
+display-messages = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "selections", "position", "file-encoding"]
+
+[keys.normal."space"]
+"h" = ":toggle lsp.display-inlay-hints"

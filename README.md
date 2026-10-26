@@ -306,6 +306,24 @@ The configuration includes:
 - Nerd Font icons
 - Ayu Mirage colors
 
+## Editors
+
+Helix uses `helix/config.toml` and `helix/themes/ayu_mirage_bright.toml`.
+The custom theme inherits Ayu Mirage, with saturated syntax colors and brighter
+body text and comments. Font weight remains inherited from the original theme.
+The Helix runtime and language-server data stay outside the repository.
+
+VS Code user settings live in `vscode/settings.json`. Color overrides for
+**Ayu Mirage Bordered** match the Helix palette, including semantic highlighting.
+The existing transparency and other editor preferences are preserved.
+Install the `teabyii.ayu` extension when setting up a new machine.
+
+Run `./setup.sh --link` to link the editor settings (and other dotfiles), backing
+up existing files. Run `./setup.sh --check` to verify the links.
+In an open Helix session, use `:config-reload` and
+`:theme ayu_mirage_bright`. If VS Code does not refresh immediately, run
+**Developer: Reload Window** from the command palette.
+
 ## Korean Input
 
 Korean input is provided by Fcitx5 with `fcitx5-hangul`.

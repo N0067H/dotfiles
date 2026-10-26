@@ -1,0 +1,176 @@
+{
+    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "editor.formatOnSave": true,
+    "workbench.tree.indent": 20,
+    "explorer.compactFolders": false,
+    "chat.disableAIFeatures": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "[markdown]": {
+        "diffEditor.ignoreTrimWhitespace": true
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "vscode_vibrancy.type": "transparent",
+    "vscode_vibrancy.opacity": 0,
+    "vscode_vibrancy.windowMode": "frameless-transparent",
+    "workbench.colorCustomizations": {
+        "terminal.background": "#00000000",
+        "editorPane.background": "#1e1e1e00",
+        "editorGroupHeader.tabsBackground": "#1e1e1e00",
+        "editorGroupHeader.noTabsBackground": "#1e1e1e00",
+        "breadcrumb.background": "#1e1e1e00",
+        "editorGutter.background": "#1e1e1e00",
+        "panel.background": "#1e1e1e00",
+        "tab.activeBackground": "#1e1e1e00",
+        "tab.unfocusedActiveBackground": "#1e1e1e00",
+        "sideBar.background": "#1e1e1e4d",
+        "sideBarTitle.background": "#1e1e1e4d",
+        "activityBar.background": "#1e1e1e4d",
+        "editor.background": "#1e1e1e4d",
+        "tab.inactiveBackground": "#1e1e1e4d",
+        "tab.unfocusedInactiveBackground": "#1e1e1e4d",
+        "editorStickyScroll.background": "#1e1e1ebf",
+        "editorStickyScrollGutter.background": "#1e1e1ebf",
+        "sideBarStickyScroll.background": "#1e1e1ebf",
+        "panelStickyScroll.background": "#1e1e1ebf",
+        "terminalStickyScroll.background": "#1e1e1ebf",
+        "minimap.background": "#1e1e1ebf",
+        "inlineChat.background": "#1e1e1ee6",
+        "editorWidget.background": "#1e1e1ee6",
+        "editorHoverWidget.background": "#1e1e1ee6",
+        "editorSuggestWidget.background": "#1e1e1ee6",
+        "notifications.background": "#1e1e1ee6",
+        "notificationCenterHeader.background": "#1e1e1ee6",
+        "menu.background": "#1e1e1ee6",
+        "quickInput.background": "#1e1e1ee6",
+        "editor.lineHighlightBorder": "#00000000",
+        "[Ayu Mirage Bordered]": {
+            "editor.foreground": "#F2F0EA",
+            "editorLineNumber.foreground": "#626C7E",
+            "editorLineNumber.activeForeground": "#DCE0E7"
+        }
+    },
+    "terminal.integrated.gpuAcceleration": "off",
+    "window.autoDetectColorScheme": false,
+    "window.controlsStyle": "custom",
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.location": "hidden",
+    "files.watcherExclude": {
+        "**/target/**": true,
+        "build/**": true
+    },
+    "editor.tokenColorCustomizations": {
+        "[Ayu Mirage Bordered]": {
+            "comments": "#A0AABA",
+            "strings": "#BAF956",
+            "keywords": "#FF9D4A",
+            "numbers": "#D4A2FF",
+            "types": "#4DC9FF",
+            "functions": "#FFC654",
+            "variables": "#F2F0EA",
+            "textMateRules": [
+                {
+                    "scope": [
+                        "keyword.control",
+                        "keyword.control.import",
+                        "keyword.control.export"
+                    ],
+                    "settings": {
+                        "foreground": "#FFC654"
+                    }
+                },
+                {
+                    "scope": [
+                        "constant.language",
+                        "constant.character",
+                        "constant.other"
+                    ],
+                    "settings": {
+                        "foreground": "#D4A2FF"
+                    }
+                },
+                {
+                    "scope": [
+                        "keyword.operator"
+                    ],
+                    "settings": {
+                        "foreground": "#FF9D4A"
+                    }
+                },
+                {
+                    "scope": [
+                        "entity.name.namespace",
+                        "entity.name.tag"
+                    ],
+                    "settings": {
+                        "foreground": "#4DC9FF"
+                    }
+                }
+            ]
+        }
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "[Ayu Mirage Bordered]": {
+            "rules": {
+                "variable": {
+                    "foreground": "#F2F0EA"
+                },
+                "parameter": {
+                    "foreground": "#F2F0EA"
+                },
+                "property": {
+                    "foreground": "#F2F0EA"
+                },
+                "type": {
+                    "foreground": "#4DC9FF"
+                },
+                "class": {
+                    "foreground": "#4DC9FF"
+                },
+                "struct": {
+                    "foreground": "#4DC9FF"
+                },
+                "enum": {
+                    "foreground": "#4DC9FF"
+                },
+                "interface": {
+                    "foreground": "#4DC9FF"
+                },
+                "typeParameter": {
+                    "foreground": "#4DC9FF"
+                },
+                "namespace": {
+                    "foreground": "#4DC9FF"
+                },
+                "function": {
+                    "foreground": "#FFC654"
+                },
+                "method": {
+                    "foreground": "#FFC654"
+                },
+                "enumMember": {
+                    "foreground": "#D4A2FF"
+                },
+                "number": {
+                    "foreground": "#D4A2FF"
+                },
+                "string": {
+                    "foreground": "#BAF956"
+                },
+                "keyword": {
+                    "foreground": "#FF9D4A"
+                },
+                "operator": {
+                    "foreground": "#FF9D4A"
+                },
+                "comment": {
+                    "foreground": "#A0AABA"
+                }
+            }
+        }
+    }
+}
