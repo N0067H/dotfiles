@@ -55,7 +55,19 @@
     xwayland.enable = true;
   };
 
-  fonts.fontconfig.defaultFonts.monospace = [
-    "JetBrainsMono Nerd Font"
-  ];
+  fonts.fontconfig = {
+    enable = true;
+    antialias = true;
+    hinting = {
+      enable = true;
+      style = "slight";
+    };
+    subpixel = {
+      rgba = "rgb";
+      lcdfilter = "default";
+    };
+    defaultFonts.monospace = [
+      "JetBrainsMono Nerd Font"
+    ];
+  };
 }
