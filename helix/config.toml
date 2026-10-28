@@ -29,3 +29,6 @@ right = ["diagnostics", "selections", "position", "file-encoding"]
 
 [keys.normal."space"]
 "h" = ":toggle lsp.display-inlay-hints"
+
+[keys.insert]
+"C-space" = "completion"

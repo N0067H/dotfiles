@@ -57,5 +57,10 @@
     "files.watcherExclude": {
         "**/target/**": true,
         "build/**": true
-    }
+    },
+    "window.menuBarVisibility": "compact",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.openInAgents.enabled": false,
+    "workbench.browser.showInTitleBar": false
 }
