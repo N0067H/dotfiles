@@ -55,6 +55,9 @@
     xwayland.enable = true;
   };
 
+  # Add a separate Niri session to GDM alongside GNOME and Hyprland.
+  programs.niri.enable = true;
+
   fonts.fontconfig = {
     enable = true;
     antialias = true;

@@ -1,4 +1,4 @@
-# Ayu Mirage with brighter text and more saturated syntax colors.
+# Ayu Mirage with bright text and vivid syntax colors.
 inherits = "ayu_mirage"
 
 "ui.linenr" = "#626C7E"
@@ -7,9 +7,9 @@ inherits = "ayu_mirage"
 [palette]
 foreground = "#F2F0EA"
 gray = "#A0AABA"
-blue = "#4DC9FF"
-green = "#BAF956"
-magenta = "#D4A2FF"
-orange = "#FF9D4A"
-red = "#FF8073"
-yellow = "#FFC654"
+blue = "#29BEFF"
+green = "#A8F52F"
+magenta = "#C980FF"
+orange = "#FF892B"
+red = "#FF6659"
+yellow = "#FFBE2E"
