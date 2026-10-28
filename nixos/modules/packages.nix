@@ -49,7 +49,7 @@
     config.boot.kernelPackages.perf
     file
 
-    # Hyprland
+    # Hyprland and Niri session utilities
     kitty
     waybar
     rofi
@@ -57,6 +57,9 @@
     hyprlock
     hypridle
     hyprshot
+    swaybg
+    swaylock
+    xwayland-satellite
 
     # Desktop
     pavucontrol

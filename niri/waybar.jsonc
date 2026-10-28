@@ -1,0 +1,51 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 36,
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": ["custom/launcher", "niri/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "network", "pulseaudio", "battery", "custom/notification"],
+  "custom/launcher": {
+    "format": "🦀  /nooth",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+  "niri/workspaces": { "format": "{name}" },
+  "clock": { "format": "{:%b %d · %a    %H:%M}", "tooltip": false },
+  "cpu": { "format": "CPU {usage:02}%", "tooltip": false },
+  "memory": { "format": "MEM {percentage:02}%", "tooltip": false },
+  "network": {
+    "format-wifi": "NET {signalStrength}%",
+    "format-ethernet": "NET LAN",
+    "format-disconnected": "NET --",
+    "on-click": "nm-connection-editor"
+  },
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "VOL --",
+    "on-click": "pavucontrol"
+  },
+  "battery": {
+    "format": "BAT {capacity}%",
+    "format-charging": "BAT +{capacity}%",
+    "format-plugged": "BAT {capacity}%"
+  },
+  "custom/notification": {
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}

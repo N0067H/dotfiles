@@ -78,6 +78,12 @@ nixos/hardware-configuration.nix
 
 ## Rebuilding NixOS
 
+The GDM login screen offers GNOME, Hyprland, and Niri after rebuilding. Niri
+has its own config in `niri/`; run `./setup.sh --link` to link it to
+`~/.config/niri`. In Niri, Super+Return opens Kitty, Super+D opens the app
+launcher, Super+Shift+L locks the screen, and Super+Shift+E exits the session.
+Hyprland remains available from the same login screen.
+
 Test a configuration without making it the permanent boot configuration:
 
 ```bash
