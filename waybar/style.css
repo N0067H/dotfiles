@@ -58,6 +58,12 @@ window#waybar {
     border-bottom: 2px solid #FF6F61;
 }
 
+#workspaces button.niri-workspace.focused {
+    color: #FFCC66;
+    background: transparent;
+    border-bottom: 2px solid #FFCC66;
+}
+
 #workspaces button.urgent {
     color: #FF6F61;
     background: transparent;

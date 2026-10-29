@@ -13,7 +13,7 @@
     "tooltip": false,
     "on-click": "rofi -show drun"
   },
-  "niri/workspaces": { "format": "{name}" },
+  "niri/workspaces": { "format": "{index}" },
   "clock": { "format": "{:%b %d · %a    %H:%M}", "tooltip": false },
   "cpu": { "format": "CPU {usage:02}%", "tooltip": false },
   "memory": { "format": "MEM {percentage:02}%", "tooltip": false },
