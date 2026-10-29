@@ -80,9 +80,18 @@ nixos/hardware-configuration.nix
 
 The GDM login screen offers GNOME, Hyprland, and Niri after rebuilding. Niri
 has its own config in `niri/`; run `./setup.sh --link` to link it to
-`~/.config/niri`. In Niri, Super+Return opens Kitty, Super+D opens the app
+`~/.config/niri`. In Niri, Super+T opens Kitty, Super+D opens the app
 launcher, Super+Shift+L locks the screen, and Super+Shift+E exits the session.
+Super+Shift+P opens the display layout menu; Super+Ctrl+Shift+P restores the
+laptop display if a screen configuration leaves it dark.
 Hyprland remains available from the same login screen.
+
+Niri's columns continue horizontally beyond the visible screen. Use Super+H/L
+to scroll between columns and Super+R to cycle their widths. Super+Comma stacks
+the next window below the current one; Super+Period splits a stacked window
+into its own column. Super+U/I moves through vertical, dynamic workspaces, and
+Super+Ctrl+U/I moves the current column to another workspace. A new empty
+workspace is always available below the last one. Super+O shows the overview.
 
 Test a configuration without making it the permanent boot configuration:
 

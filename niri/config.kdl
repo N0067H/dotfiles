@@ -1,44 +1,82 @@
 // Niri session alongside the existing Hyprland session.
 input {
-    keyboard { xkb { layout "us"; } }
-    touchpad { tap; natural-scroll; }
+    keyboard {
+        xkb {
+            layout "us"
+            options "korean:ralt_hangul,caps:ctrl_modifier"
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
 }
 
 layout {
     gaps 12
     default-column-width { proportion 0.5; }
-    focus-ring { width 2; active-color "#7fc8ff"; }
+    focus-ring { off; }
+    border {
+        on
+        width 1
+        active-gradient from="#ffcc66" to="#73d0ff" angle=45
+        inactive-color "#3a4152"
+    }
+}
+
+// Keep the border gradient out of Kitty's translucent background.
+window-rule {
+    match app-id="^kitty$"
+    draw-border-with-background false
 }
 
 spawn-at-startup "waybar" "-c" "/home/noobth/dev/dotfiles/niri/waybar.jsonc" "-s" "/home/noobth/dev/dotfiles/waybar/style.css"
 spawn-at-startup "swaync"
 spawn-at-startup "nm-applet"
-spawn-at-startup "swaybg" "-i" "/home/noobth/dev/dotfiles/hypr/wallpapers/ayu-night.png" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/noobth/dev/dotfiles/Dreamy Futuristic City Over a Twilight Fjord.png" "-m" "fill"
+spawn-at-startup "fcitx5" "-r" "-D"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Return { spawn "kitty"; }
-    Mod+D { spawn "rofi" "-show" "drun"; }
-    Mod+E { spawn "nautilus"; }
-    Mod+Q { close-window; }
-    Mod+Shift+E { quit; }
-    Mod+Shift+L { spawn "swaylock"; }
+    Mod+T hotkey-overlay-title="Open terminal: Kitty" { spawn "kitty"; }
+    Mod+B hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
+    Ctrl+B hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
+    Mod+D hotkey-overlay-title="Open app launcher" { spawn "rofi" "-show" "drun"; }
+    Mod+E hotkey-overlay-title="Open files" { spawn "nautilus"; }
+    Mod+Shift+V hotkey-overlay-title="Clipboard history" { spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"; }
+    Mod+Q hotkey-overlay-title="Close window" { close-window; }
+    Mod+Shift+E hotkey-overlay-title="Exit Niri" { quit; }
+    Mod+Shift+L hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
+    Mod+Shift+P hotkey-overlay-title="Display layout" { spawn "/home/noobth/dev/dotfiles/niri/scripts/display-menu.sh"; }
+    Mod+Ctrl+Shift+P hotkey-overlay-title="Restore laptop display" { spawn "/home/noobth/dev/dotfiles/niri/scripts/display-menu.sh" "--recover"; }
 
-    Mod+H { focus-column-left; }
-    Mod+J { focus-window-down; }
-    Mod+K { focus-window-up; }
-    Mod+L { focus-column-right; }
-    Mod+Ctrl+H { move-column-left; }
-    Mod+Ctrl+J { move-window-down; }
-    Mod+Ctrl+K { move-window-up; }
-    Mod+Ctrl+L { move-column-right; }
-    Mod+U { focus-workspace-down; }
-    Mod+I { focus-workspace-up; }
-    Mod+R { switch-preset-column-width; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod+Space { toggle-window-floating; }
-    Mod+O { toggle-overview; }
+    Mod+H hotkey-overlay-title="Focus column left" { focus-column-left; }
+    Mod+J hotkey-overlay-title="Focus window down" { focus-window-down; }
+    Mod+K hotkey-overlay-title="Focus window up" { focus-window-up; }
+    Mod+L hotkey-overlay-title="Focus column right" { focus-column-right; }
+    Mod+Ctrl+H hotkey-overlay-title="Move column left" { move-column-left; }
+    Mod+Ctrl+J hotkey-overlay-title="Move window down" { move-window-down; }
+    Mod+Ctrl+K hotkey-overlay-title="Move window up" { move-window-up; }
+    Mod+Ctrl+L hotkey-overlay-title="Move column right" { move-column-right; }
+    Mod+BracketLeft hotkey-overlay-title="Join or split window to the left" { consume-or-expel-window-left; }
+    Mod+BracketRight hotkey-overlay-title="Join or split window to the right" { consume-or-expel-window-right; }
+    Mod+Comma hotkey-overlay-title="Stack next window in this column" { consume-window-into-column; }
+    Mod+Period hotkey-overlay-title="Split window into a new column" { expel-window-from-column; }
+    Mod+U hotkey-overlay-title="Workspace down" { focus-workspace-down; }
+    Mod+I hotkey-overlay-title="Workspace up" { focus-workspace-up; }
+    Mod+Ctrl+U hotkey-overlay-title="Move column to workspace down" { move-column-to-workspace-down; }
+    Mod+Ctrl+I hotkey-overlay-title="Move column to workspace up" { move-column-to-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="Scroll to workspace down" { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 hotkey-overlay-title="Scroll to workspace up" { focus-workspace-up; }
+    Mod+Shift+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="Scroll right through columns" { focus-column-right; }
+    Mod+Shift+WheelScrollUp cooldown-ms=150 hotkey-overlay-title="Scroll left through columns" { focus-column-left; }
+    Mod+R hotkey-overlay-title="Change column width" { switch-preset-column-width; }
+    Mod+F hotkey-overlay-title="Maximize column" { maximize-column; }
+    Mod+Shift+F hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
+    Mod+Space hotkey-overlay-title="Toggle floating" { toggle-window-floating; }
+    Mod+O hotkey-overlay-title="Toggle overview" { toggle-overview; }
 
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
