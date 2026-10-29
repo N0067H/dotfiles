@@ -12,6 +12,11 @@ input {
     }
 }
 
+cursor {
+    xcursor-theme "BreezeX-RosePine-Linux"
+    xcursor-size 22
+}
+
 layout {
     gaps 12
     default-column-width { proportion 0.5; }

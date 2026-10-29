@@ -90,6 +90,7 @@
 
     # Util
     rose-pine-hyprcursor 
+    rose-pine-cursor
     openssl
     openssl.dev 
     unzip
