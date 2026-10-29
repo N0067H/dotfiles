@@ -12,6 +12,7 @@
     git
     gh
     gcc
+    llvm
     clang
     clang-tools
     pkg-config
@@ -60,6 +61,7 @@
     swaybg
     swaylock
     xwayland-satellite
+    mouseless
 
     # Desktop
     pavucontrol

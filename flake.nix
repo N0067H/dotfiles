@@ -5,9 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
     codex-desktop.url = "github:ilysenko/codex-desktop-linux";
+    driftwm.url = "github:malbiruk/driftwm";
   };
 
-  outputs = { self, nixpkgs, codex-desktop, ... }:
+  outputs = { self, nixpkgs, codex-desktop, driftwm, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -20,6 +21,7 @@
 
         modules = [
           ./nixos/configuration.nix
+          driftwm.nixosModules.default
 
           ({ pkgs, ... }: {
             environment.systemPackages = [

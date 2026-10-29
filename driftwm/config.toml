@@ -1,0 +1,45 @@
+# Trial session alongside Niri. Unspecified settings retain driftwm defaults.
+autostart = [
+  "waybar -c /home/noobth/dev/dotfiles/driftwm/waybar.jsonc -s /home/noobth/dev/dotfiles/waybar/style.css",
+  "swaync",
+  "nm-applet",
+  "fcitx5 -r -D",
+  "wl-paste --type text --watch cliphist store",
+  "wl-paste --type image --watch cliphist store",
+]
+
+[input.keyboard]
+layout = "us"
+options = "korean:ralt_hangul,caps:ctrl_modifier"
+
+[cursor]
+theme = "BreezeX-RosePine-Linux"
+size = 22
+
+[background]
+type = "wallpaper"
+path = "/home/noobth/dev/dotfiles/Dreamy Futuristic City Over a Twilight Fjord.png"
+
+[keybindings]
+"mod+t" = "exec kitty"
+"mod+b" = "exec firefox"
+"mod+d" = "exec rofi -show drun"
+"mod+e" = "exec nautilus"
+"mod+shift+v" = "spawn cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+"mod+shift+l" = "exec swaylock"
+"mod+shift+e" = "quit"
+"XF86AudioRaiseVolume" = "spawn wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+"XF86AudioLowerVolume" = "spawn wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+"XF86AudioMute" = "spawn wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+"XF86MonBrightnessUp" = "spawn brightnessctl set +10%"
+"XF86MonBrightnessDown" = "spawn brightnessctl set 10%-"
+
+[[outputs]]
+name = "eDP-1"
+mode = "2880x1800"
+scale = 2.0
+
+[[outputs]]
+name = "HDMI-A-1"
+mode = "1920x1080"
+scale = 1.0

@@ -58,6 +58,9 @@
   # Add a separate Niri session to GDM alongside GNOME and Hyprland.
   programs.niri.enable = true;
 
+  # Separate GDM session; the active Niri session stays available.
+  programs.driftwm.enable = true;
+
   fonts.fontconfig = {
     enable = true;
     antialias = true;
