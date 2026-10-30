@@ -39,7 +39,8 @@ spawn-at-startup "waybar" "-c" "/home/noobth/dev/dotfiles/niri/waybar.jsonc" "-s
 spawn-at-startup "swaync"
 spawn-at-startup "nm-applet"
 spawn-at-startup "swaybg" "-i" "/home/noobth/dev/dotfiles/Dreamy Futuristic City Over a Twilight Fjord.png" "-m" "fill"
-spawn-at-startup "fcitx5" "-r" "-D"
+// Let the Wayland session finish initializing before Fcitx connects to it.
+spawn-at-startup "sh" "-c" "sleep 3; exec fcitx5 -r -D"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
