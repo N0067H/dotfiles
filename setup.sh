@@ -7,6 +7,7 @@ BACKUP="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 declare -a LINKS=(
   "hypr:$HOME/.config/hypr"
   "niri:$HOME/.config/niri"
+  "bin/codex:$HOME/.local/bin/codex"
   "autostart/org.fcitx.Fcitx5.desktop:$HOME/.config/autostart/org.fcitx.Fcitx5.desktop"
   "driftwm:$HOME/.config/driftwm"
   "waybar:$HOME/.config/waybar"

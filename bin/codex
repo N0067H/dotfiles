@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+releases="$HOME/.codex/packages/app-server-daemon/releases"
+binary="$(find "$releases" -mindepth 3 -maxdepth 3 -type f -path '*/bin/codex' -perm -u+x 2>/dev/null | sort -V | tail -n 1)"
+
+if [[ -z "$binary" ]]; then
+  printf 'codex: no installed Codex executable found in %s\n' "$releases" >&2
+  exit 127
+fi
+
+exec "$binary" "$@"
