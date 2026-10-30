@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Fcitx 5
+Exec=fcitx5
+TryExec=fcitx5
+Terminal=false
+# Niri starts fcitx5 with its own Wayland environment from config.kdl.
+NotShowIn=niri;
