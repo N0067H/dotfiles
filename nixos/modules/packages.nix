@@ -19,6 +19,7 @@
     clang
     clang-tools
     pkg-config
+    postgresql_16
     protobuf
     ruby
     just
@@ -36,7 +37,6 @@
     spotify
 
     # Notifications
-    swaynotificationcenter
     libnotify
 
     # Utilities
@@ -53,22 +53,14 @@
     config.boot.kernelPackages.perf
     file
 
-    # Hyprland and Niri session utilities
+    # Shared Wayland utilities (session-specific tools live in sessions/)
     kitty
     waybar
     rofi
-    hyprpaper
-    hyprlock
-    hypridle
-    hyprshot
-    swaybg
-    swaylock
-    xwayland-satellite
     mouseless
 
     # Desktop
     pavucontrol
-    networkmanagerapplet
     blueman
     nautilus
     brightnessctl

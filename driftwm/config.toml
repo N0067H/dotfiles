@@ -18,7 +18,7 @@ size = 22
 
 [background]
 type = "wallpaper"
-path = "/home/noobth/dev/dotfiles/Dreamy Futuristic City Over a Twilight Fjord.png"
+path = "/home/noobth/dev/dotfiles/wallpapers/legacy/twilight-fjord-city.png"
 
 [keybindings]
 "mod+t" = "exec kitty"

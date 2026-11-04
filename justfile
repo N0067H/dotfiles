@@ -5,6 +5,25 @@ cluster := "dev"
 default:
     @just --list
 
+# Validate live app links, shell scripts, theme assets, and Niri configuration.
+check:
+    bash scripts/check.sh
+
+# Evaluate the complete NixOS system without activating it.
+check-nix:
+    nix eval --raw path:.#nixosConfigurations.nixos.config.system.build.toplevel.drvPath
+
+# Link all settings, a group (desktop/editors/shell/browser/tools), or one app.
+link group="all":
+    bash setup.sh --link {{quote(group)}}
+
+# Apply the desktop palette, wallpaper, and Niri border colors together.
+theme name="ocean":
+    bash scripts/theme.sh {{quote(name)}}
+
+themes:
+    bash scripts/theme.sh --list
+
 # Create a local Docker-backed Kubernetes cluster.
 k8s-up:
     docker info > /dev/null

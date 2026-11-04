@@ -25,7 +25,7 @@
         inherit system;
 
         specialArgs = {
-          inherit codex-desktop;
+          inherit codex-desktop noctalia;
         };
 
         modules = [
@@ -35,7 +35,6 @@
           ({ pkgs, ... }: {
             environment.systemPackages = [
               codex-desktop.packages.${system}.default
-              noctalia.packages.${system}.default
             ];
           })
         ];

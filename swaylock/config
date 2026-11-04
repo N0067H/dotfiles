@@ -1,0 +1,20 @@
+color=1a2533
+scaling=fill
+indicator-idle-visible
+indicator-radius=60
+indicator-thickness=4
+inside-color=1a2533dd
+ring-color=8dbfd5
+key-hl-color=86bdb9
+bs-hl-color=c6a297
+inside-ver-color=253547ee
+ring-ver-color=86bdb9
+inside-wrong-color=382329ee
+ring-wrong-color=da9d9f
+text-color=d6e0e7
+text-ver-color=d6e0e7
+text-wrong-color=da9d9f
+line-uses-inside
+separator-color=00000000
+font=JetBrainsMono Nerd Font
+font-size=18

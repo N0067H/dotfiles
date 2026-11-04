@@ -1,16 +1,22 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./sessions/niri.nix
+    ./sessions/hyprland.nix
+    ./sessions/driftwm.nix
+    ./sessions/gnome.nix
+  ];
   # Package
   services.flatpak.enable = true;
   
   # Bluetooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
   # Display manager / fallback desktop
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
@@ -47,19 +53,6 @@
       ];
     };
   };
-
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-
-  # Add a separate Niri session to GDM alongside GNOME and Hyprland.
-  programs.niri.enable = true;
-
-  # Separate GDM session; the active Niri session stays available.
-  programs.driftwm.enable = true;
 
   fonts.fontconfig = {
     enable = true;

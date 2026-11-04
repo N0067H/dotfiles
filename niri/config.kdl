@@ -21,13 +21,9 @@ layout {
     gaps 12
     default-column-width { proportion 0.5; }
     focus-ring { off; }
-    border {
-        on
-        width 1
-        active-gradient from="#8dbfd5" to="#86bdb9" angle=45
-        inactive-color "#435b70"
-    }
 }
+
+include "theme.kdl"
 
 // Round both the compositor border and the actual window surface together.
 window-rule {
@@ -54,9 +50,9 @@ binds {
     Mod+Shift+V hotkey-overlay-title="Clipboard history" { spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"; }
     Mod+Q hotkey-overlay-title="Close window" { close-window; }
     Mod+Shift+E hotkey-overlay-title="Exit Niri" { quit; }
-    Mod+Shift+L hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
-    Mod+Shift+P hotkey-overlay-title="Display layout" { spawn "/home/noobth/dev/dotfiles/niri/scripts/display-menu.sh"; }
-    Mod+Ctrl+Shift+P hotkey-overlay-title="Restore laptop display" { spawn "/home/noobth/dev/dotfiles/niri/scripts/display-menu.sh" "--recover"; }
+    Mod+Shift+L hotkey-overlay-title="Lock screen" { spawn-sh "bash \"$HOME/.config/niri/scripts/lock.sh\""; }
+    Mod+Shift+P hotkey-overlay-title="Display layout" { spawn-sh "\"$HOME/.config/niri/scripts/display-menu.sh\""; }
+    Mod+Ctrl+Shift+P hotkey-overlay-title="Restore laptop display" { spawn-sh "\"$HOME/.config/niri/scripts/display-menu.sh\" --recover"; }
 
     Mod+H hotkey-overlay-title="Focus column left" { focus-column-left; }
     Mod+J hotkey-overlay-title="Focus window down" { focus-window-down; }

@@ -1,6 +1,7 @@
 require 'base64'
 
-root = File.expand_path('..', __dir__)
+root = File.expand_path('../wallpapers/archive/ferris', __dir__)
+asset_dir = File.expand_path('../wallpapers/sources/ferris', __dir__)
 rng = Random.new(17)
 parts = ['<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3840" height="2160" viewBox="0 0 1920 1080">']
 parts << '<rect width="1920" height="1080" fill="#303B46"/>'
@@ -47,7 +48,7 @@ palettes = [['#889F9A','#586F72'],['#B6AB93','#827667'],['#AE8E82','#795D5C'],['
 end
 # Actual original Ferris illustrations, embedded without redrawing the character.
 assets = %w[ferris-flat ferris-happy ferris-cuddly-transparent].map do |name|
-  'data:image/png;base64,' + Base64.strict_encode64(File.binread(File.join(__dir__,name+'.png')))
+  'data:image/png;base64,' + Base64.strict_encode64(File.binread(File.join(asset_dir,name+'.png')))
 end
 4.times do |row|
   y=239+row*250

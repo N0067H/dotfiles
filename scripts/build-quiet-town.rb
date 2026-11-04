@@ -1,5 +1,6 @@
 require 'base64'
-root = File.expand_path('..', __dir__)
+root = File.expand_path('../wallpapers/archive/ferris', __dir__)
+asset_dir = File.expand_path('../wallpapers/sources/ferris', __dir__)
 p = ['<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3840" height="2160" viewBox="0 0 1920 1080">', '<rect width="1920" height="1080" fill="#303B46"/>']
 def rect(p,x,y,w,h,c,r=0)
   p << %(<rect x="#{x}" y="#{y}" width="#{w}" height="#{h}" rx="#{r}" fill="#{c}"/>)
@@ -31,7 +32,7 @@ end
 [22,1807].each_with_index do |x,side|
   [260,510,760].each_with_index { |y,i| house(p,x,y,81,77,colors,i+side) }
 end
-assets=%w[ferris-flat ferris-happy ferris-cuddly-transparent].map { |n| 'data:image/png;base64,'+Base64.strict_encode64(File.binread(File.join(__dir__,n+'.png'))) }
+assets=%w[ferris-flat ferris-happy ferris-cuddly-transparent].map { |n| 'data:image/png;base64,'+Base64.strict_encode64(File.binread(File.join(asset_dir,n+'.png'))) }
 11.times do |i|
   p << %(<image x="#{64+i*172}" y="1026" width="35" height="25" xlink:href="#{assets[i%3]}"/>)
 end
