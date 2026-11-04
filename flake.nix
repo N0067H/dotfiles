@@ -12,6 +12,14 @@
     let
       system = "x86_64-linux";
     in {
+      devShells.${system}.default = let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in pkgs.mkShell {
+        buildInputs = with pkgs; [
+          openssl
+        ];
+      };
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
 
