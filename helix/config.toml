@@ -30,5 +30,8 @@ right = ["diagnostics", "selections", "position", "file-encoding"]
 [keys.normal."space"]
 "h" = ":toggle lsp.display-inlay-hints"
 
+[keys.normal]
+"C-r" = ":reload-all"
+
 [keys.insert]
 "C-space" = "completion"

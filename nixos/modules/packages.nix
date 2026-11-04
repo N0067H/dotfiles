@@ -3,6 +3,8 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  environment.variables.PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+
   environment.systemPackages = with pkgs; [
     # Dev
     nodejs
@@ -12,6 +14,7 @@
     git
     gh
     gcc
+    cmake
     llvm
     clang
     clang-tools

@@ -1,143 +1,291 @@
 # NixOS Dotfiles
 
-Personal NixOS and Hyprland configuration for my ASUS Zenbook 14.
+Personal NixOS configuration and desktop dotfiles for an ASUS Zenbook 14.
+System configuration is managed with a Nix flake; application settings are
+linked from this repository with [`setup.sh`](setup.sh).
 
-This repository is the source of truth for my NixOS system configuration and desktop dotfiles. The system configuration is managed with a Nix flake, while application configs are linked directly from this repository.
+The configuration enables **Niri, Hyprland, GNOME, and an experimental driftwm
+session** through GDM. Each compositor has its own configuration; Waybar,
+Rofi, Kitty, and notification styles are shared where referenced.
 
 ## System
 
-- **OS:** NixOS
-- **Desktop:** Hyprland
-- **Display Manager:** GDM
-- **Shell:** Zsh
-- **Terminal:** Kitty
-- **Prompt:** Starship
-- **Launcher:** Rofi
-- **Bar:** Waybar
-- **Notifications:** SwayNotificationCenter
-- **File Manager:** Nautilus
-- **Browser:** Firefox
-- **Theme:** Ayu Mirage
-- **Font:** JetBrainsMono Nerd Font
+| Component | Configuration |
+| --- | --- |
+| Nixpkgs input | `nixos-26.05`, revisions pinned in `flake.lock` |
+| Architecture / host | `x86_64-linux` / `nixos` |
+| User / timezone | `noobth` / `Asia/Seoul` |
+| Display manager | GDM |
+| Desktop sessions | Niri, Hyprland, GNOME, driftwm |
+| Terminal / shell / prompt | Kitty / Zsh / Starship |
+| Launcher / bar / notifications | Rofi / Waybar / SwayNotificationCenter |
+| Browser / file manager | Firefox / Nautilus |
+| Audio / networking | PipeWire / NetworkManager |
+| Korean input | Fcitx5 with `fcitx5-hangul` |
+| Colors / font | Ayu Mirage-inspired / JetBrainsMono Nerd Font |
 
-### Hardware
+The target laptop is an ASUS Zenbook 14 UX3405MA with an Intel Core Ultra 9
+185H, integrated graphics, 32 GB RAM, a 2880×1800 OLED display at 120 Hz,
+and a 1 TB NVMe SSD. The machine dual-boots Windows 11 and NixOS.
 
-- **Laptop:** ASUS Zenbook 14 UX3405MA
-- **CPU:** Intel Core Ultra 9 185H
-- **GPU:** Intel integrated graphics
-- **Memory:** 32 GB
-- **Display:** 2880×1800 OLED, 120 Hz
-- **Storage:** 1 TB NVMe SSD
-- **Boot:** Windows 11 / NixOS dual boot
+This is a personal configuration. Before applying it elsewhere, adapt the
+hardware configuration, username, hostname, display outputs, and paths.
+Several desktop files reference `/home/noobth/dev/dotfiles` directly.
 
-## Repository Structure
+## Configuration map
 
-```text
-.
-├── flake.nix
-├── flake.lock
-│
-├── nixos/
-│   ├── configuration.nix
-│   └── hardware-configuration.nix
-│
-├── hypr/
-├── waybar/
-├── rofi/
-├── kitty/
-├── zsh/
-├── starship/
-├── swaync/
-├── gtk-3.0/
-├── gtk-4.0/
-├── firefox/
-└── codex-desktop/
-```
+| Location | Purpose |
+| --- | --- |
+| [`flake.nix`](flake.nix), [`flake.lock`](flake.lock) | System entry point and pinned inputs; Codex Desktop and driftwm inputs |
+| [`nixos/configuration.nix`](nixos/configuration.nix) | Host configuration, module imports, user, networking, and services |
+| [`nixos/hardware-configuration.nix`](nixos/hardware-configuration.nix) | Machine-specific hardware and filesystem configuration |
+| [`nixos/modules/desktop.nix`](nixos/modules/desktop.nix) | Desktop sessions, audio, input method, and font rendering |
+| [`nixos/modules/packages.nix`](nixos/modules/packages.nix) | Desktop applications, development tools, and CLI utilities |
+| [`nixos/modules/shell.nix`](nixos/modules/shell.nix) | Zsh and the user's login shell |
+| [`nixos/modules/docker.nix`](nixos/modules/docker.nix) | Docker daemon and user group |
+| [`nixos/modules/kubernetes.nix`](nixos/modules/kubernetes.nix) | Kubernetes development tools |
+| [`niri/`](niri) | Niri config, its Waybar modules, and display menu |
+| [`hypr/`](hypr) | Hyprland Lua config, modules, wallpaper, lock, idle, and scripts |
+| [`driftwm/`](driftwm) | Experimental driftwm config and its Waybar modules |
+| [`waybar/`](waybar), [`rofi/`](rofi), [`swaync/`](swaync) | Bar, launcher, and notification configuration |
+| [`kitty/`](kitty), [`gtk-3.0/`](gtk-3.0), [`gtk-4.0/`](gtk-4.0) | Terminal and GTK appearance |
+| [`helix/`](helix), [`vscode/`](vscode), [`firefox/`](firefox) | Editor settings and Firefox browser chrome |
+| [`zsh/`](zsh), [`starship/`](starship) | Shell configuration and prompt |
+| [`autostart/`](autostart), [`bin/`](bin), [`codex-desktop/`](codex-desktop) | Session autostart, user commands, and application flags |
+| [`kubernetes/kind.yaml`](kubernetes/kind.yaml), [`justfile`](justfile) | Local Kubernetes cluster and commands |
 
-### NixOS
+Some system options and packages are also declared directly in
+`nixos/configuration.nix`; consult it together with the imported modules.
 
-`flake.nix` is the entry point for the system configuration.
+## Setup and rebuild
 
-The current host is:
-
-```text
-nixos
-```
-
-The main system configuration lives in:
-
-```text
-nixos/configuration.nix
-```
-
-Hardware-specific configuration lives in:
-
-```text
-nixos/hardware-configuration.nix
-```
-
-## Rebuilding NixOS
-
-The GDM login screen offers GNOME, Hyprland, and Niri after rebuilding. Niri
-has its own config in `niri/`; run `./setup.sh --link` to link it to
-`~/.config/niri`. In Niri, Super+T opens Kitty, Super+D opens the app
-launcher, Super+Shift+L locks the screen, and Super+Shift+E exits the session.
-Super+Shift+P opens the display layout menu; Super+Ctrl+Shift+P restores the
-laptop display if a screen configuration leaves it dark.
-Hyprland remains available from the same login screen.
-
-Niri's columns continue horizontally beyond the visible screen. Use Super+H/L
-to scroll between columns and Super+R to cycle their widths. Super+Comma stacks
-the next window below the current one; Super+Period splits a stacked window
-into its own column. Super+U/I moves through vertical, dynamic workspaces, and
-Super+Ctrl+U/I moves the current column to another workspace. A new empty
-workspace is always available below the last one. Super+O shows the overview.
-
-Test a configuration without making it the permanent boot configuration:
+Clone to the path used by the current desktop configuration:
 
 ```bash
-sudo nixos-rebuild test --flake ~/dev/dotfiles#nixos
+mkdir -p ~/dev
+git clone https://github.com/N0067H/dotfiles.git ~/dev/dotfiles
+cd ~/dev/dotfiles
 ```
 
-Apply the configuration:
+For another machine, review `flake.nix`, `nixos/configuration.nix`, the imported
+modules, and `nixos/hardware-configuration.nix` before rebuilding. The shell
+and Docker modules also refer to the `noobth` user.
+
+Test the system configuration, then persist it once it works:
 
 ```bash
-sudo nixos-rebuild switch --flake ~/dev/dotfiles#nixos
+sudo nixos-rebuild test --flake .#nixos
+sudo nixos-rebuild switch --flake .#nixos
 ```
 
-Zsh aliases are provided for both:
+Link application settings and inspect the links:
 
 ```bash
-nrt
-nrs
+./setup.sh --link
+./setup.sh --check
 ```
 
-Where:
+`--link` moves existing targets into `~/.dotfiles-backup/<timestamp>/` before
+creating symlinks. It links all configured applications, including editor
+settings, the Fcitx autostart entry, and `~/.local/bin/codex`; it does not
+install packages or rebuild NixOS. `--check` reports link status without
+changing files. Run `--check` again after linking to inspect the results.
 
-```text
-nrt → nixos-rebuild test
-nrs → nixos-rebuild switch
+The Firefox chrome target in `setup.sh` contains the personal profile name
+`5qu4wikv.default`; change it for another profile. The Zsh `code` alias points
+to `~/.local/share/vscode-vibrancy/current/bin/code`, which must exist separately.
+
+For selective reuse, link only the directories you need after backing up any
+existing targets. Configuration edits may require an application reload or
+session restart. Changes to NixOS modules or flake inputs require a rebuild.
+
+## Niri
+
+### Files and installation
+
+- [`niri/config.kdl`](niri/config.kdl): input, layout, borders, startup commands, and keybindings.
+- [`niri/waybar.jsonc`](niri/waybar.jsonc): Niri workspace module and bar widgets.
+- [`niri/scripts/display-menu.sh`](niri/scripts/display-menu.sh): laptop/external display switching and recovery.
+- [`waybar/style.css`](waybar/style.css): shared bar style used by Niri.
+
+The NixOS session is enabled in `nixos/modules/desktop.nix` with:
+
+```nix
+programs.niri.enable = true;
 ```
 
-My usual workflow is:
+To reuse just Niri, enable that option in your own NixOS configuration and
+install the applications referenced by the settings. The current setup uses
+Kitty, Firefox, Rofi, Nautilus, Waybar, SwayNotificationCenter, `nm-applet`,
+`swaybg`, `swaylock`, Fcitx5, `wl-clipboard`, `cliphist`, `jq`, `libnotify`,
+`brightnessctl`, and `wpctl` for audio. Bar click actions also use
+`nm-connection-editor` and `pavucontrol`. See
+[`nixos/modules/packages.nix`](nixos/modules/packages.nix) for package names and
+[`nixos/modules/desktop.nix`](nixos/modules/desktop.nix) for Korean input setup.
+
+Place the Niri directory at `~/.config/niri`, or link it from your checkout.
+Adjust the absolute paths to the Waybar config/style, wallpaper, and display
+script in `config.kdl`. Copy the shared application configs if you want the
+same appearance. The default `setup.sh --link` links these together.
+
+Validate a configuration before using it:
 
 ```bash
-nrt
-nrs
+niri validate -c ~/.config/niri/config.kdl
 ```
 
-Test first, then switch once the configuration works.
+Niri starts Fcitx5 after a short delay. The shared Fcitx autostart entry excludes
+Niri so that it uses the startup command in `config.kdl` instead.
 
-## Cloudflare WARP
+### Keybindings
 
-`services.cloudflare-warp.enable` installs `warp-cli` and starts the WARP
-daemon on boot. Apply the configuration:
+`Super` is the main modifier. Columns scroll horizontally; workspaces extend
+vertically, with an empty workspace below the last one.
+
+| Key | Action |
+| --- | --- |
+| `Super + Shift + /` | Show hotkey overlay |
+| `Super + T` / `B` / `D` / `E` | Kitty / Firefox / Rofi / Nautilus |
+| `Super + Q` | Close window |
+| `Super + H/J/K/L` | Focus column left / window down / window up / column right |
+| `Super + Ctrl + H/J/K/L` | Move column left / window down / window up / column right |
+| `Super + ,` / `.` | Stack next window / split window into a new column |
+| `Super + [` / `]` | Join or split a window on the left / right |
+| `Super + U/I` | Workspace down / up |
+| `Super + Ctrl + U/I` | Move column to workspace down / up |
+| `Super + R` | Cycle column widths |
+| `Super + F` | Maximize column |
+| `Super + Shift + F` or `Ctrl + B` | Toggle fullscreen |
+| `Super + Space` / `O` | Toggle floating / overview |
+| `Super + Shift + V` | Clipboard history |
+| `Super + Shift + L` / `E` | Lock / exit session |
+| `Super + Shift + P` | Display layout menu |
+| `Super + Ctrl + Shift + P` | Restore laptop display |
+| `Print` | Screenshot |
+
+The display menu assumes `eDP-1` at 2880×1800 with scale 2 and `HDMI-A-1` at
+1920×1080 with scale 1. It offers External only, Laptop only, and Extend.
+Edit the output names, resolutions, scales, and positions for your hardware;
+`niri msg outputs` lists the available outputs.
+
+## Hyprland and driftwm
+
+Hyprland uses [`hypr/hyprland.lua`](hypr/hyprland.lua), which loads
+[`hypr/modules/autostart.lua`](hypr/modules/autostart.lua) and
+[`hypr/modules/appearance.lua`](hypr/modules/appearance.lua). The Lua file is
+the entry point for the current bindings and window rules; the directory also
+contains `.conf` files for individual utilities and monitor/workspace settings.
+
+| Key | Hyprland action |
+| --- | --- |
+| `Super + T` / `B` / `E` | Kitty / Firefox / Nautilus |
+| `Super + R` | Rofi |
+| `Super + C` | Close window |
+| `Super + L` | Hyprlock |
+| `Super + H` | Keybinding help |
+| `Super + 1…0` | Switch workspace |
+| `Super + Shift + 1…0` | Move window to workspace |
+| `Super + Shift + V` | Clipboard history |
+| `Super + Shift + P` | Display layout menu |
+| `Super + Ctrl + Shift + P` | Restore laptop display |
+| `Alt + Tab` | Cycle windows |
+| `Print` / `Super + Print` / `Super + Shift + Print` | Region / window / output screenshot |
+
+Hyprland starts Waybar, Hyprpaper, Hypridle, SwayNotificationCenter, and clipboard
+watchers. Screenshots are saved to `~/Pictures/Screenshots`.
+
+The experimental driftwm session is enabled through the flake's driftwm module
+and `programs.driftwm.enable`. Its settings live in
+[`driftwm/config.toml`](driftwm/config.toml), with a separate
+[`driftwm/waybar.jsonc`](driftwm/waybar.jsonc). It also contains personal wallpaper
+paths and display settings. Unspecified options retain driftwm defaults.
+GNOME remains enabled as another GDM session.
+
+## Themes and transparency
+
+| Setting | File / location |
+| --- | --- |
+| Niri border gradient, gaps, cursor | [`niri/config.kdl`](niri/config.kdl): `layout`, `cursor`, and `window-rule` |
+| Hyprland opacity, borders, blur | [`hypr/hyprland.lua`](hypr/hyprland.lua), with appearance overrides in [`hypr/modules/appearance.lua`](hypr/modules/appearance.lua) |
+| Kitty colors and transparency | [`kitty/kitty.conf`](kitty/kitty.conf): `background_opacity 0.60` |
+| Waybar colors and transparency | [`waybar/style.css`](waybar/style.css): `window#waybar`, background alpha `0.34` |
+| Rofi colors and layout | [`rofi/theme.rasi`](rofi/theme.rasi), loaded by [`rofi/config.rasi`](rofi/config.rasi) |
+| Notification style | [`swaync/style.css`](swaync/style.css) |
+| GTK style | [`gtk-3.0/gtk.css`](gtk-3.0/gtk.css), [`gtk-4.0/gtk.css`](gtk-4.0/gtk.css) |
+| Wallpaper | Startup commands in Niri/driftwm and [`hypr/hyprpaper.conf`](hypr/hyprpaper.conf) |
+
+Niri does not currently set global window opacity. Kitty and Waybar control
+their own transparency; Niri's Kitty rule avoids drawing a border background
+behind the translucent terminal. Hyprland additionally applies a Kitty opacity
+rule, so its resulting appearance differs from Niri.
+
+Helix uses [`helix/config.toml`](helix/config.toml) and the custom
+[`ayu_mirage_bright.toml`](helix/themes/ayu_mirage_bright.toml) theme. Reload an
+open session with `:config-reload`. VS Code settings are in
+[`vscode/settings.json`](vscode/settings.json); the configured **Ayu Mirage
+Bordered** theme requires the `teabyii.ayu` extension. Application extensions,
+Helix runtime data, and local transparency tooling are not installed by the
+symlink script.
+
+## Shell and development tools
+
+Zsh uses Starship, zoxide, fzf integration, autosuggestions, and syntax
+highlighting. CLI tools and language toolchains are listed in
+`nixos/modules/packages.nix`.
+
+| Alias | Command / purpose |
+| --- | --- |
+| `ll` / `la` / `tree` | eza listings and tree view |
+| `ff` | fastfetch |
+| `gs` / `gd` / `ga` / `gc` / `gp` / `gl` | Git status / diff / add / commit / push / log |
+| `nrt` / `nrs` | Test / switch `~/dev/dotfiles#nixos` |
+| `dots` | Change to `~/dev/dotfiles` |
+| `k` / `kctx` / `kns` | kubectl / kubectx / kubens |
+
+### Local Kubernetes
+
+The Kubernetes module installs kubectl, Helm, kind, k9s, kubectx/kubens,
+Kustomize, Skaffold, Stern, and kubeconform. Docker starts on boot; the kind
+cluster is created explicitly. After applying Docker group membership, log
+out and back in before using it.
 
 ```bash
-sudo nixos-rebuild switch --flake ~/dev/dotfiles#nixos
+cd ~/dev/dotfiles
+just k8s-up
+just k8s-status
+just k8s-ui
 ```
 
-Register once, accept the terms when prompted, and connect:
+[`kubernetes/kind.yaml`](kubernetes/kind.yaml) defines a single control-plane
+node with a digest-pinned `kindest/node:v1.35.0` image and a localhost API.
+The cluster name is `dev`, and the kubectl context is `kind-dev`.
+
+```bash
+docker build -t my-app:dev /path/to/app
+just k8s-load my-app:dev
+kubectl --context kind-dev apply -f /path/to/app/k8s/
+kubectl --context kind-dev port-forward service/my-app 8080:80
+stern --context kind-dev my-app
+```
+
+Use `image: my-app:dev` and `imagePullPolicy: IfNotPresent` for locally loaded
+images. `just k8s-down` deletes the cluster and its workloads/data. Credentials
+remain in the local kubeconfig, outside this repository.
+
+## Other services and application integration
+
+The host also enables PostgreSQL 16 (with `mydatabase`), Tailscale, Cloudflare
+WARP, Bluetooth/Blueman, printing, Flatpak, and an 80% battery charge threshold
+when the machine exposes the configured `BAT0` control file. Review these in
+`nixos/configuration.nix` and `nixos/modules/desktop.nix` when reusing the setup.
+
+Codex Desktop is installed from a flake input. The setup script links only its
+`electron-flags.conf` for Wayland rendering. The `bin/codex` wrapper uses a
+locally installed executable under `~/.codex/packages/app-server-daemon/releases`;
+it requires that executable to already exist. Application runtime data,
+sessions, credentials, caches, and local storage remain outside this repository.
+
+For WARP, after applying the system configuration:
 
 ```bash
 warp-cli registration new
@@ -145,311 +293,6 @@ warp-cli connect
 warp-cli status
 ```
 
-Check the connection with `curl https://www.cloudflare.com/cdn-cgi/trace`;
-`warp=on` confirms WARP is active. Use `warp-cli disconnect` to disconnect.
-See the [Cloudflare Linux guide](https://developers.cloudflare.com/warp-client/get-started/linux/).
-Registration data stays in `/var/lib/cloudflare-warp`, outside this repository.
-
-## Dotfile Management
-
-Application configuration files are stored in this repository and linked into `~/.config`.
-
-Examples:
-
-```text
-~/.config/hypr    → ~/dev/dotfiles/hypr
-~/.config/waybar  → ~/dev/dotfiles/waybar
-~/.config/rofi    → ~/dev/dotfiles/rofi
-~/.config/kitty   → ~/dev/dotfiles/kitty
-~/.config/swaync  → ~/dev/dotfiles/swaync
-~/.config/gtk-3.0 → ~/dev/dotfiles/gtk-3.0
-~/.config/gtk-4.0 → ~/dev/dotfiles/gtk-4.0
-~/.zshrc          → ~/dev/dotfiles/zsh/.zshrc
-```
-
-Because these are symlinks, most application configuration changes take effect without rebuilding NixOS.
-
-System-level changes in `nixos/configuration.nix` require a rebuild.
-
-## Shell
-
-Zsh is configured with:
-
-- Starship
-- zoxide
-- fzf
-- zsh autosuggestions
-- zsh syntax highlighting
-- eza
-- bat
-- ripgrep
-
-Useful aliases include:
-
-```text
-ll      detailed directory listing
-la      include hidden files
-tree    directory tree
-ff      fastfetch
-
-gs      git status
-gd      git diff
-ga      git add
-gc      git commit
-gp      git push
-gl      git log
-
-nrt     test NixOS configuration
-nrs     switch NixOS configuration
-dots    cd ~/dev/dotfiles
-```
-
-## CLI Tools
-
-The system also includes several modern CLI utilities:
-
-| Tool | Purpose |
-| --- | --- |
-| `eza` | Modern `ls` alternative |
-| `bat` | Syntax-highlighted file viewer |
-| `ripgrep` | Fast recursive text search |
-| `fd` | Fast file search |
-| `fzf` | Fuzzy finder |
-| `zoxide` | Smarter directory navigation |
-| `jq` | JSON processor |
-| `yq` | YAML processor |
-| `dust` | Disk usage viewer |
-| `duf` | Filesystem usage viewer |
-| `procs` | Modern process viewer |
-| `tldr` | Practical command examples |
-| `btop` | System resource monitor |
-| `fastfetch` | System information |
-
-## Kubernetes Development
-
-`nixos/modules/kubernetes.nix` installs `kubectl`, Helm (`helm`), kind,
-k9s, kubectx/kubens, Kustomize, Skaffold, Stern, and kubeconform.
-Versions follow the existing `flake.lock`. Docker is managed by
-`nixos/modules/docker.nix`, including membership of `noobth` in the Docker group.
-
-Apply the tools to this machine, then open a new terminal:
-
-```bash
-sudo nixos-rebuild switch --flake ~/dev/dotfiles#nixos
-cd ~/dev/dotfiles
-just k8s-up
-just k8s-status
-```
-
-If Docker reports permission denied, log out and back in to refresh group
-membership. Check `docker info` before creating the cluster.
-
-The `dev` cluster runs one control-plane node with a pinned Kubernetes 1.35.0
-image supported by the locked kind 0.31.0 release. Its API listens on localhost.
-See the [kind release notes](https://github.com/kubernetes-sigs/kind/releases/tag/v0.31.0)
-for the image digest. Cluster creation is explicit; it does not run on boot.
-kind saves access credentials to your kubeconfig (normally `~/.kube/config`)
-and selects the `kind-dev` context. Keep kubeconfig outside this repository.
-
-```bash
-just k8s-ui                          # k9s for kind-dev
-docker build -t my-app:dev /path/to/app
-just k8s-load my-app:dev              # make the image available to the node
-kubectl --context kind-dev apply -f /path/to/app/k8s/
-kubectl --context kind-dev port-forward service/my-app 8080:80
-stern --context kind-dev my-app
-```
-
-Use `image: my-app:dev` and `imagePullPolicy: IfNotPresent` in your development
-Deployment to use the loaded image. Port forwarding exposes the service at
-`http://localhost:8080` while the command runs. See the
-[kind quick start](https://kind.sigs.k8s.io/docs/user/quick-start/)
-for the image-loading workflow.
-
-`k` aliases `kubectl`, `kctx` switches contexts, and `kns` switches namespaces.
-Always check the context before applying manifests to another cluster.
-Run `just k8s-down` to delete the local cluster, including its workloads and
-data; run `just k8s-up` to create it again.
-
-## Hyprland
-
-Hyprland is the primary Wayland compositor.
-
-The configuration includes:
-
-- Workspace navigation
-- Window movement
-- Mouse window dragging/resizing
-- Special workspace
-- Rofi launcher
-- Hyprlock
-- Clipboard history with `cliphist`
-- Waybar
-- SwayNotificationCenter
-- Hypridle
-- Korean input through Fcitx5
-- Touchpad configuration
-- Ayu Mirage colors
-
-Some useful keybindings:
-
-| Key | Action |
-| --- | --- |
-| `Super + T` | Open terminal |
-| `Super + C` | Close window |
-| `Super + E` | Open file manager |
-| `Super + R` | Open Rofi |
-| `Super + B` | Open Firefox |
-| `Super + L` | Lock screen |
-| `Alt + Tab` | Cycle windows |
-| `Super + 1..0` | Switch workspace |
-| `Super + Shift + 1..0` | Move window to workspace |
-| `Super + Shift + V` | Clipboard history |
-
-## Kitty
-
-Kitty uses JetBrainsMono Nerd Font and an Ayu Mirage-inspired color scheme.
-
-The configuration includes:
-
-- Native Wayland rendering
-- Custom cursor
-- Scrollback
-- Shell integration
-- Tab management
-- Current-directory-aware new tabs
-- Nerd Font icons
-- Ayu Mirage colors
-
-## Editors
-
-Helix uses `helix/config.toml` and `helix/themes/ayu_mirage_bright.toml`.
-The custom theme inherits Ayu Mirage, with saturated syntax colors and brighter
-body text and comments. Font weight remains inherited from the original theme.
-The Helix runtime and language-server data stay outside the repository.
-
-VS Code user settings live in `vscode/settings.json`, preserving the original
-**Ayu Mirage Bordered** theme, transparency, and editor preferences.
-Install the `teabyii.ayu` extension when setting up a new machine.
-
-Run `./setup.sh --link` to link the editor settings (and other dotfiles), backing
-up existing files. Run `./setup.sh --check` to verify the links.
-In an open Helix session, use `:config-reload` and
-`:theme ayu_mirage_bright`. If VS Code does not refresh immediately, run
-**Developer: Reload Window** from the command palette.
-
-## Korean Input
-
-Korean input is provided by Fcitx5 with `fcitx5-hangul`.
-
-The NixOS configuration manages the input method declaratively.
-
-## Codex Desktop
-
-Codex Desktop is installed through the Nix flake.
-
-Native Wayland rendering is enabled through:
-
-```text
-codex-desktop/electron-flags.conf
-```
-
-with:
-
-```text
---ozone-platform=wayland
-```
-
-Only the persistent configuration is stored in this repository.
-
-Runtime data such as cookies, sessions, caches, credentials, and local storage should remain outside the repository.
-
-## Fresh Installation
-
-This repository is primarily intended for my own machine and contains hardware- and user-specific configuration.
-
-Do **not** blindly apply it to another machine.
-
-For my current system, clone the repository:
-
-```bash
-mkdir -p ~/dev
-git clone git@github.com:N0067H/dotfiles.git ~/dev/dotfiles
-cd ~/dev/dotfiles
-```
-
-The repository contains the NixOS hardware configuration used by this machine.
-
-Before rebuilding, review at least:
-
-```text
-flake.nix
-nixos/configuration.nix
-nixos/hardware-configuration.nix
-```
-
-Then test the configuration:
-
-```bash
-sudo nixos-rebuild test --flake .#nixos
-```
-
-If successful:
-
-```bash
-sudo nixos-rebuild switch --flake .#nixos
-```
-
-Application configs can then be linked into the home directory as needed.
-
-Example:
-
-```bash
-ln -s ~/dev/dotfiles/hypr ~/.config/hypr
-ln -s ~/dev/dotfiles/waybar ~/.config/waybar
-ln -s ~/dev/dotfiles/rofi ~/.config/rofi
-ln -s ~/dev/dotfiles/kitty ~/.config/kitty
-ln -s ~/dev/dotfiles/swaync ~/.config/swaync
-
-ln -s ~/dev/dotfiles/zsh/.zshrc ~/.zshrc
-```
-
-Existing files should be backed up or removed before creating these symlinks.
-
-## Git Workflow
-
-After changing system configuration:
-
-```bash
-nrt
-```
-
-If the test succeeds:
-
-```bash
-nrs
-```
-
-Then review and commit:
-
-```bash
-git status
-git diff
-git add -A
-git commit
-git push
-```
-
-## Notes
-
-This is a personal configuration rather than a general-purpose NixOS distribution or installer.
-
-Some values are intentionally specific to:
-
-- the `noobth` user
-- the `nixos` hostname
-- ASUS Zenbook hardware
-- my directory layout
-- my preferred applications and keybindings
-
-Review the configuration before reusing it on another system.
+Accept the registration terms if prompted. Use `warp-cli disconnect` to
+disconnect. Registration data lives outside the repository in
+`/var/lib/cloudflare-warp`.
