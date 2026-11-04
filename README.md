@@ -17,6 +17,7 @@ git clone https://github.com/N0067H/dotfiles.git ~/dev/dotfiles
 cd ~/dev/dotfiles
 just link
 just theme ocean
+just desktop-setup
 just check
 ```
 
@@ -38,6 +39,7 @@ before applying this personal configuration to another machine.
 | `just check-nix` | Evaluate the NixOS system without activating it |
 | `just link [group-or-app]` | Link all or selected application settings |
 | `just themes` / `just theme ocean` | List / apply desktop presets |
+| `just desktop-setup` | Apply weather, night light, authentication, and idle defaults |
 | `sudo nixos-rebuild test --flake .#nixos` | Temporarily activate the system configuration |
 | `sudo nixos-rebuild switch --flake .#nixos` | Activate and select it for future boots |
 | `just k8s-up` / `just k8s-status` / `just k8s-down` | Manage the local kind cluster |

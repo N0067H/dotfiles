@@ -24,6 +24,10 @@ theme name="ocean":
 themes:
     bash scripts/theme.sh --list
 
+# Configure weather, media-related UI, authentication, idle behavior, and night light.
+desktop-setup:
+    bash scripts/noctalia-setup.sh
+
 # Create a local Docker-backed Kubernetes cluster.
 k8s-up:
     docker info > /dev/null

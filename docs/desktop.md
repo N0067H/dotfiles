@@ -35,6 +35,20 @@ niri validate -c ~/.config/niri/config.kdl
 Niri starts Fcitx5 after a short delay. The shared Fcitx autostart entry excludes
 Niri so that it uses the startup command in `config.kdl` instead.
 
+`just desktop-setup` applies the service defaults from `noctalia/services.json`:
+IP-based location, metric weather, a weather bar widget, the Polkit agent,
+night light (6500K day / 4500K night), and idle lock/screen-off/suspend at
+10/11/15 minutes. Location depends on the public IP; a VPN can affect it.
+Preferences are persisted by Noctalia. Rerunning the command reapplies these
+defaults, including the bar end-widget order. It also selects Ferris as the avatar.
+
+The lock shortcut uses Noctalia's built-in lock, matching the menu and
+lock-before-suspend behavior. It authenticates with the system `login` PAM stack.
+The existing swaylock configuration remains a fallback when Noctalia is not
+running. Fingerprint unlock is disabled until a fingerprint service is configured.
+Playback keys use Noctalia's native MPRIS integration; playerctl and cava are
+not needed. The active compatible player is selected automatically.
+
 ### Keybindings
 
 `Super` is the main modifier. Columns scroll horizontally; workspaces extend

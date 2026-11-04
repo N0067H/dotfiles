@@ -6,6 +6,7 @@ while IFS= read -r -d '' script; do
   bash -n "$script"
 done < <(find scripts hypr/scripts niri/scripts bin -type f \( -name '*.sh' -o -name codex \) -print0)
 bash -n setup.sh
+jq -e 'type == "object" and .["weather.enabled"] == true and .["idle.behavior.lock.action"] == "lock"' noctalia/services.json >/dev/null
 while IFS= read -r -d '' script; do ruby -c "$script"; done < <(find scripts -name '*.rb' -print0)
 for preset in themes/*/preset.json; do
   jq -e '.palette and .mode and .wallpaper' "$preset" > /dev/null
