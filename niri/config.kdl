@@ -24,21 +24,19 @@ layout {
     border {
         on
         width 1
-        active-gradient from="#ffcc66" to="#73d0ff" angle=45
-        inactive-color "#3a4152"
+        active-gradient from="#8dbfd5" to="#86bdb9" angle=45
+        inactive-color "#435b70"
     }
 }
 
-// Keep the border gradient out of Kitty's translucent background.
+// Round both the compositor border and the actual window surface together.
 window-rule {
-    match app-id="^kitty$"
+    geometry-corner-radius 12
+    clip-to-geometry true
     draw-border-with-background false
 }
 
-spawn-at-startup "waybar" "-c" "/home/noobth/dev/dotfiles/niri/waybar.jsonc" "-s" "/home/noobth/dev/dotfiles/waybar/style.css"
-spawn-at-startup "swaync"
-spawn-at-startup "nm-applet"
-spawn-at-startup "swaybg" "-i" "/home/noobth/dev/dotfiles/Dreamy Futuristic City Over a Twilight Fjord.png" "-m" "fill"
+spawn-at-startup "noctalia"
 // Let the Wayland session finish initializing before Fcitx connects to it.
 spawn-at-startup "sh" "-c" "sleep 3; exec fcitx5 -r -D"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
@@ -49,7 +47,9 @@ binds {
     Mod+T hotkey-overlay-title="Open terminal: Kitty" { spawn "kitty"; }
     Mod+B hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
     Ctrl+B hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
-    Mod+D hotkey-overlay-title="Open app launcher" { spawn "rofi" "-show" "drun"; }
+    Mod+D hotkey-overlay-title="Open app launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+S hotkey-overlay-title="Control center" { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+    Mod+Shift+Comma hotkey-overlay-title="Noctalia settings" { spawn "noctalia" "msg" "settings-toggle"; }
     Mod+E hotkey-overlay-title="Open files" { spawn "nautilus"; }
     Mod+Shift+V hotkey-overlay-title="Clipboard history" { spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"; }
     Mod+Q hotkey-overlay-title="Close window" { close-window; }

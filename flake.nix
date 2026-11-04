@@ -6,9 +6,10 @@
 
     codex-desktop.url = "github:ilysenko/codex-desktop-linux";
     driftwm.url = "github:malbiruk/driftwm";
+    noctalia.url = "github:noctalia-dev/noctalia/v5.4.1";
   };
 
-  outputs = { self, nixpkgs, codex-desktop, driftwm, ... }:
+  outputs = { self, nixpkgs, codex-desktop, driftwm, noctalia, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -34,6 +35,7 @@
           ({ pkgs, ... }: {
             environment.systemPackages = [
               codex-desktop.packages.${system}.default
+              noctalia.packages.${system}.default
             ];
           })
         ];

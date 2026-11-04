@@ -8,6 +8,22 @@ The configuration enables **Niri, Hyprland, GNOME, and an experimental driftwm
 session** through GDM. Each compositor has its own configuration; Waybar,
 Rofi, Kitty, and notification styles are shared where referenced.
 
+Niri uses Noctalia 5.4.1 for its bar, launcher, and notifications. `Super+D`
+opens the launcher, `Super+S` opens the control center, and `Super+Shift+,`
+opens settings. The Noctalia release is pinned in `flake.nix` and `flake.lock`.
+The OceanDusk palette lives in `noctalia/palettes/`; `setup.sh` links it into
+Noctalia's config directory. After linking, select the current desktop look with:
+
+```sh
+noctalia msg color-scheme-set custom OceanDusk
+noctalia msg theme-mode-set dark
+noctalia msg wallpaper-set "$HOME/dev/dotfiles/wallpapers/ocean-blue-hour-soft-lift.png"
+```
+
+Niri uses matching blue/teal borders with 12px rounded and clipped corners.
+Generated wallpaper variants and the original Ferris asset sources are kept in
+`wallpapers/`; Ferris town SVGs can be regenerated with the Ruby scripts there.
+
 ## System
 
 | Component | Configuration |
