@@ -28,6 +28,7 @@
     qemu
     k6
     teleport
+    awscli2
 
     # SNS
     discord-ptb
