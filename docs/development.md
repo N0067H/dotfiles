@@ -13,6 +13,40 @@ highlighting. CLI tools and language toolchains are listed in
 | `dots` | Change to `~/dev/dotfiles` |
 | `k` / `kctx` / `kns` | kubectl / kubectx / kubens |
 
+### AI tools (llm-agents.nix)
+
+The flake installs the upstream `llm-agents-launcher` and configures Numtide's
+binary cache. Run the launcher, search for a tool, and press Enter to run it;
+press Esc to cancel. Tools are downloaded on demand and may require their own
+login or API key. The launcher fetches the latest upstream revision when running
+a selected tool; the installed launcher itself is pinned by `flake.lock`.
+
+```bash
+llm-agents-launcher
+# Run a particular tool without the picker:
+nix run github:numtide/llm-agents.nix#claude-code
+nix run github:numtide/llm-agents.nix#opencode
+```
+
+To install a tool permanently, add e.g. `llm-agents.packages.${system}.claude-code`
+next to the launcher in `flake.nix`, then apply the configuration:
+
+```bash
+cd ~/dev/dotfiles
+sudo nixos-rebuild switch --flake .#nixos
+```
+
+To update the pinned package collection and launcher:
+
+```bash
+nix flake update llm-agents
+sudo nixos-rebuild switch --flake .#nixos
+```
+
+Keep llm-agents' own nixpkgs input: upstream tests against its unstable pin,
+while this system uses stable nixpkgs. See the
+[upstream usage guide](https://github.com/numtide/llm-agents.nix#usage).
+
 ### Local Kubernetes
 
 The Kubernetes module installs kubectl, Helm, kind, k9s, kubectx/kubens,
