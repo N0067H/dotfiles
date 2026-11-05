@@ -1,4 +1,6 @@
 {
+  "widget.launcher.glyph": "search",
+  "widget.launcher.custom_image_colorize": false,
   "location.auto_locate": true,
   "weather.enabled": true,
   "weather.unit": "metric",

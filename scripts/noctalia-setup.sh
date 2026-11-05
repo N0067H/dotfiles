@@ -6,5 +6,6 @@ jq -e 'type == "object" and length > 0' "$repo/noctalia/services.json" >/dev/nul
 while IFS=$'\t' read -r key value; do
   noctalia msg config-set "$key" "$value"
 done < <(jq -r 'to_entries[] | [.key, (.value | tojson)] | @tsv' "$repo/noctalia/services.json")
-noctalia msg config-set shell.avatar_path "$(jq -cn --arg path "$repo/wallpapers/sources/ferris/ferris-flat.png" '$path')"
+noctalia msg config-set shell.avatar_path "$(jq -cn --arg path "$repo/wallpapers/sources/ferris/ferris-avatar.png" '$path')"
+noctalia msg config-set widget.launcher.custom_image "$(jq -cn --arg path "$repo/wallpapers/sources/ferris/ferris-cuddly-bright.png" '$path')"
 echo 'Noctalia services configured. Location uses IP geolocation; weather refreshes every 30 minutes.'
