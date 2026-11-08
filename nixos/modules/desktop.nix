@@ -40,6 +40,12 @@
   # Browser
   programs.firefox.enable = true;
 
+  # Steam and Windows game compatibility
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
+
   # Korean input
   i18n.inputMethod = {
     enable = true;
