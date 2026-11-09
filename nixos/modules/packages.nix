@@ -8,6 +8,9 @@
   environment.systemPackages = with pkgs; [
     # Dev
     nodejs
+    python3
+    python3Packages.pip
+    pipx
     vscode
     rustup
     go
