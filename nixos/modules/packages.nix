@@ -32,6 +32,7 @@
     k6
     teleport
     awscli2
+    openbao
 
     # SNS
     discord-ptb
@@ -56,7 +57,7 @@
     delta
     config.boot.kernelPackages.perf
     file
-
+    
     # Shared Wayland utilities (session-specific tools live in sessions/)
     kitty
     waybar
