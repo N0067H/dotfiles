@@ -38,7 +38,9 @@ Niri so that it uses the startup command in `config.kdl` instead.
 `just desktop-setup` applies the service defaults from `noctalia/services.json`:
 IP-based location, metric weather, a weather bar widget, the Polkit agent,
 night light (6500K day / 4500K night), and idle lock/screen-off/suspend at
-10/11/15 minutes. Location depends on the public IP; a VPN can affect it.
+10/11/15 minutes. Automatic suspend only runs on battery power; connecting an
+AC or USB-C charger keeps the system awake. Lock and screen-off timers still apply.
+Location depends on the public IP; a VPN can affect it.
 Preferences are persisted by Noctalia. Rerunning the command reapplies these
 defaults, including the bar end-widget order. It also selects Ferris as the avatar.
 

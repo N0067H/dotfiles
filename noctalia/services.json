@@ -20,7 +20,8 @@
   "idle.behavior.screen-off.action": "screen_off",
   "idle.behavior.screen-off.timeout": 660,
   "idle.behavior.screen-off.enabled": true,
-  "idle.behavior.lock-and-suspend.action": "lock_and_suspend",
+  "idle.behavior.lock-and-suspend.action": "custom",
+  "idle.behavior.lock-and-suspend.command": "bash \"$HOME/.config/niri/scripts/idle-suspend.sh\"",
   "idle.behavior.lock-and-suspend.timeout": 900,
   "idle.behavior.lock-and-suspend.enabled": true,
   "bar.default.end": ["weather", "media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session"]
