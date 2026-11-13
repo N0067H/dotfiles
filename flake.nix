@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    bootvine = {
+      url = "git+https://codeberg.org/wvhulle/bootvine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Keep upstream's nixpkgs pin for compatibility and binary cache hits.
     llm-agents.url = "github:numtide/llm-agents.nix";
 
@@ -11,7 +15,7 @@
     noctalia.url = "github:noctalia-dev/noctalia/v5.4.1";
   };
 
-  outputs = { self, nixpkgs, llm-agents, codex-desktop, driftwm, noctalia, ... }:
+  outputs = { self, nixpkgs, bootvine, llm-agents, codex-desktop, driftwm, noctalia, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -32,6 +36,7 @@
 
         modules = [
           ./nixos/configuration.nix
+          bootvine.nixosModules.default
           driftwm.nixosModules.default
 
           ({ pkgs, ... }: {

@@ -14,6 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  services.bootvine.enable = true;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
