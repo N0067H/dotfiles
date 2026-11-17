@@ -34,6 +34,24 @@
     awscli2
     openbao
 
+    pince
+    (writeShellScriptBin "pince-gui" ''
+      exec /run/wrappers/bin/pkexec ${coreutils}/bin/env \
+        DISPLAY="$DISPLAY" \
+        XAUTHORITY="$XAUTHORITY" \
+        WAYLAND_DISPLAY="$WAYLAND_DISPLAY" \
+        XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+        ${pince}/bin/pince "$@"
+    '')
+    (lib.hiPrio (makeDesktopItem {
+      name = "PINCE";
+      desktopName = "PINCE";
+      comment = "Reverse engineering tool and memory scanner";
+      exec = "pince-gui";
+      icon = "utilities-system-monitor";
+      categories = [ "Development" ];
+    }))
+
     # SNS
     discord-ptb
     element-desktop
@@ -98,4 +116,6 @@
     openssl.dev 
     unzip
   ];
+
+  boot.kernel.sysctl."kernel.yama.ptrace_scope" = 0;
 }
