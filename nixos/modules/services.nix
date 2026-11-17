@@ -6,6 +6,13 @@
     package = pkgs.postgresql_16;
     ensureDatabases = [ "mydatabase" ];
   };
+  services.pgbackrest = {
+    enable = true;
+    repos.localhost = {
+      path = "/var/lib/pgbackrest";
+      retention-full = 2;
+    };
+  };
   services.tailscale.enable = true;
   services.cloudflare-warp.enable = true;
 
