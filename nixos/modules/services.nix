@@ -16,6 +16,9 @@
   services.tailscale.enable = true;
   services.cloudflare-warp.enable = true;
 
+  systemd.services.postgresql.serviceConfig.ReadWritePaths = [
+    "/var/lib/pgbackrest/archive"
+  ];
   systemd.services.battery-charge-threshold = {
     description = "Set battery charge threshold to 80%";
 
