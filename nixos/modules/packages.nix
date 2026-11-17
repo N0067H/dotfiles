@@ -37,6 +37,7 @@
     # SNS
     discord-ptb
     element-desktop
+    (pkgs.callPackage ../packages/picora.nix { })
 
     # Play
     spotify

@@ -19,6 +19,8 @@
     let
       system = "x86_64-linux";
     in {
+      packages.${system}.picora = nixpkgs.legacyPackages.${system}.callPackage ./nixos/packages/picora.nix { };
+
       devShells.${system}.default = let
         pkgs = nixpkgs.legacyPackages.${system};
       in pkgs.mkShell {
