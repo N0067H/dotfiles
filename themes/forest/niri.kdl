@@ -1,0 +1,8 @@
+layout {
+    border {
+        on
+        width 1
+        active-gradient from="#a8c3a0" to="#d5c59b" angle=45
+        inactive-color "#465b4b"
+    }
+}

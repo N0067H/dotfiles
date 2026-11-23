@@ -10,6 +10,8 @@ GROUP="${2:-all}"
 declare -a LINKS=(
   "hypr:$HOME/.config/hypr"
   "niri:$HOME/.config/niri"
+  "noctalia/palettes/StellarDusk.json:$HOME/.config/noctalia/palettes/StellarDusk.json"
+  "noctalia/palettes/ForestMist.json:$HOME/.config/noctalia/palettes/ForestMist.json"
   "noctalia/palettes/OceanDusk.json:$HOME/.config/noctalia/palettes/OceanDusk.json"
   "bin/codex:$HOME/.local/bin/codex"
   "autostart/org.fcitx.Fcitx5.desktop:$HOME/.config/autostart/org.fcitx.Fcitx5.desktop"

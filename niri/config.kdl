@@ -33,6 +33,7 @@ window-rule {
 }
 
 spawn-at-startup "noctalia"
+spawn-at-startup "bash" "-c" "exec bash \"$HOME/.config/niri/scripts/theme-rotate.sh\""
 // Let the Wayland session finish initializing before Fcitx connects to it.
 spawn-at-startup "sh" "-c" "sleep 3; exec fcitx5 -r -D"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"

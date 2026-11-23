@@ -8,6 +8,19 @@ if [[ "$name" == --list ]]; then
   done
   exit 0
 fi
+# Serialize manual changes and automatic rotation together.
+runtime="${XDG_RUNTIME_DIR:-/tmp/dotfiles-theme-$UID}"
+mkdir -p "$runtime"
+exec 9>"$runtime/dotfiles-theme.lock"
+flock 9
+if [[ "$name" == --next ]]; then
+  current="$(basename "$(dirname "$(readlink -f "$repo/niri/theme.kdl")")")"
+  case "$current" in
+    ocean) name=forest ;;
+    forest) name=space ;;
+    *) name=ocean ;;
+  esac
+fi
 [[ "$name" =~ ^[a-z0-9_-]+$ ]] || { echo 'Invalid theme name' >&2; exit 1; }
 preset="$repo/themes/$name/preset.json"
 [[ -f "$preset" ]] || { echo "Unknown theme: $name" >&2; exit 1; }
