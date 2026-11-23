@@ -84,6 +84,7 @@
     mouseless
 
     # Desktop
+    apostrophe
     pavucontrol
     blueman
     nautilus
