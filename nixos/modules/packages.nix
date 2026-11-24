@@ -85,6 +85,7 @@
 
     # Desktop
     apostrophe
+    gnumeric
     pavucontrol
     blueman
     nautilus
