@@ -105,6 +105,7 @@
     fd
     jq
     yq-go
+    visidata
     dust
     duf
     procs
