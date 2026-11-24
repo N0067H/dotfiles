@@ -59,6 +59,7 @@
 
     # Play
     spotify
+    spotify-player
 
     # Notifications
     libnotify
