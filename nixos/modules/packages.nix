@@ -33,6 +33,7 @@
     teleport
     awscli2
     openbao
+    claude-code
 
     pince
     (writeShellScriptBin "pince-gui" ''
